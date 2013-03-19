@@ -3,6 +3,8 @@
 
 #include "Interface.hpp"
 
+#include <sfml/window.hpp>
+#include <sfml/system.hpp>
 
 class Button;
 

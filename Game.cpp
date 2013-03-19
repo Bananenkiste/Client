@@ -144,6 +144,7 @@ void Game::init()
     Config::load();
     state = Game::Intro;
     createWindow(Config::getValue("resolution_x"),Config::getValue("resolution_y"));
+    std::cout<<"asdf:"<<Network::getIP()<<std::endl;
     //TextureBuffer::loadFont(Config::getString("font"));
     end = false;
 

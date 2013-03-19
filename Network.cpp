@@ -156,6 +156,12 @@ void Network::closeSocket(SOCKET node)
 
 std::string Network::getIP()
 {
+    char* hostname;
+    gethostname(hostname,255);
+
+
+    hostent* host;
+    host = gethostbyname(hostname);
 
 }
 

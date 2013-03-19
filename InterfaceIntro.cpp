@@ -1,11 +1,10 @@
 #include "InterfaceIntro.hpp"
-#include "TextureBuffer.hpp"
 
+
+#include "Game.hpp"
 #include "Button.hpp"
 #include "Config.hpp"
-
-#include <sfml/window.hpp>
-#include <sfml/system.hpp>
+#include "TextureBuffer.hpp"
 
 InterfaceIntro::InterfaceIntro(sf::RenderWindow* aWindow): Interface(aWindow)
 {
@@ -24,6 +23,21 @@ InterfaceIntro::~InterfaceIntro()
 void InterfaceIntro::update(float step)
 {
     sf::Vector2i mpos = sf::Mouse::getPosition(*Interface::window);
+    if(sf::Mouse::isButtonPressed(sf::Mouse::Left))
+    {
+        for(std::vector<Button*>::iterator it=buttons.begin();it!=buttons.end();++it)
+        {
+            if((*it)->getActive())
+            {
+                if(strcmp((*it)->getName().c_str(),"Start"))
+                {
+                    std::cout<<"YAY button"<<std::endl;
+                    Game::changeMode(Game::Serverlist);
+                    return;
+                }
+            }
+        }
+    }
     for(std::vector<Button*>::iterator it=buttons.begin();it!=buttons.end();++it)
     {
         (*it)->update(mpos.x,mpos.y);

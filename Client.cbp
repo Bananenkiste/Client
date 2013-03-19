@@ -32,6 +32,13 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Linker>
+			<Add library="libws2_32.a" />
+			<Add library="sfml-graphics" />
+			<Add library="sfml-window" />
+			<Add library="sfml-audio" />
+			<Add library="sfml-system" />
+		</Linker>
 		<Unit filename="Animation.cpp" />
 		<Unit filename="Animation.hpp" />
 		<Unit filename="Button.cpp" />
