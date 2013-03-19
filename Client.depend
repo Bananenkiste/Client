@@ -1,0 +1,84 @@
+# depslib dependency file v1.0
+1363609554 source:n:\skydrive\my programs\c++\client\animation.cpp
+	"Animation.hpp"
+	<sstream>
+	<iostream>
+
+1363609554 n:\skydrive\my programs\c++\client\animation.hpp
+	"TextureBuffer.hpp"
+	<sfml/Graphics.hpp>
+	<glm/glm.hpp>
+	<vector>
+
+1363698049 n:\skydrive\my programs\c++\client\texturebuffer.hpp
+	<iostream>
+	<map>
+	<sfml/Graphics.hpp>
+
+1363609555 source:n:\skydrive\my programs\c++\client\button.cpp
+	"Button.hpp"
+	"TextureBuffer.hpp"
+
+1363609555 n:\skydrive\my programs\c++\client\button.hpp
+	"sfml\graphics.hpp"
+	"sfml\window.hpp"
+
+1363700326 source:n:\skydrive\my programs\c++\client\chatwindow.cpp
+	"Chatwindow.hpp"
+	"Game.hpp"
+	"Message.hpp"
+	"Network.hpp"
+	"TextureBuffer.hpp"
+	"Config.hpp"
+
+1363609550 n:\skydrive\my programs\c++\client\chatwindow.hpp
+	<sfml/window.hpp>
+	<sfml/graphics.hpp>
+	<vector>
+
+1363696434 n:\skydrive\my programs\c++\client\game.hpp
+	<sfml/window.hpp>
+	<sfml/graphics.hpp>
+	<sfml/system.hpp>
+	<vector>
+	"Player.hpp"
+
+1363127136 n:\skydrive\my programs\c++\client\player.hpp
+	<glm/glm.hpp>
+	<iostream>
+	<winsock2.h>
+	<windows.h>
+
+1363609551 n:\skydrive\my programs\c++\client\message.hpp
+	<iostream>
+	<sfml/window.hpp>
+	<sfml/graphics.hpp>
+
+1363701149 n:\skydrive\my programs\c++\client\network.hpp
+	<iostream>
+	<winsock2.h>
+	<windows.h>
+
+1356084741 n:\skydrive\my programs\c++\client\config.hpp
+	<map>
+	<string>
+
+1358376471 source:n:\skydrive\my programs\c++\client\config.cpp
+	"Config.hpp"
+	"Fileloader.hpp"
+	<iostream>
+	<vector>
+	<sstream>
+
+1354542640 n:\skydrive\my programs\c++\client\fileloader.hpp
+	<string>
+	<vector>
+
+1355239142 source:n:\skydrive\my programs\c++\client\fileloader.cpp
+	"Fileloader.hpp"
+	<iostream>
+	<fstream>
+	<algorithm>
+	<sstream>
+	<dirent.h>
+
