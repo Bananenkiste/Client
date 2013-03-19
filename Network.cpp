@@ -79,13 +79,8 @@ SOCKET Network::waitForConnection(SOCKET node)
                 rc=recv(s,buffer,256,0);
                 buffer[rc]=0;
                 std::cout<<"Message from client:"<<buffer<<std::endl;*/
-
             }
             while(1);
-
-
-
-
         }
         else
         {
@@ -156,12 +151,36 @@ void Network::closeSocket(SOCKET node)
 
 std::string Network::getIP()
 {
-    char* hostname;
-    gethostname(hostname,255);
+    char hostname[255];
+    gethostname(hostname,sizeof(hostname));
 
+    struct hostent* host;
+    struct in_addr add;
 
-    hostent* host;
     host = gethostbyname(hostname);
-
+    if(host != NULL)
+    {
+        switch (host->h_addrtype)
+        {
+            case AF_INET:
+            {
+                //IP V4
+                int x=0;
+                if(host->h_addr_list[0] != 0)
+                {
+                    add.s_addr = *(u_long*) host->h_addr_list[0];
+                    return(inet_ntoa(add));
+                }
+                break;
+            }
+            case AF_INET6:
+            {
+                //IP V6
+                std::cout<<"IP v6 is not supported"<<std::endl;
+                break;
+            }
+        }
+    }
+    return ("ERROR");
 }
 

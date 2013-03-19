@@ -29,7 +29,7 @@ void InterfaceIntro::update(float step)
         {
             if((*it)->getActive())
             {
-                if(strcmp((*it)->getName().c_str(),"Start"))
+                if(strcmp((*it)->getName().c_str(),"Start")==0)
                 {
                     std::cout<<"YAY button"<<std::endl;
                     Game::changeMode(Game::Serverlist);
