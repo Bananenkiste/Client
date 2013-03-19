@@ -18,6 +18,7 @@ class Button
         std::string name;
         sf::Sprite* normal;
         sf::Sprite* over;
+        sf::Text label;
 };
 
 #endif // BUTTON_H
