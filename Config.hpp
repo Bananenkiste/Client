@@ -11,7 +11,6 @@ class Config
         virtual ~Config();
         static void load();
         static float getValue(std::string name);
-        static float getSpeed();
         static std::string getString(std::string name);
     protected:
     private:

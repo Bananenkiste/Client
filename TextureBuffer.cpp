@@ -80,15 +80,15 @@ Animation TextureBuffer::LoadAnimation(std::string animname)
     }
 }
 
-sf::Font getFont()
+sf::Font TextureBuffer::getFont()
 {
     return stdfont;
 }
 
-void TextureBuffer::LoadFont()
+void TextureBuffer::LoadFont(std::string fontname)
 {
-    std::string nfilename = filename;
+    /*std::string nfilename = filename;
     nfilename.append(".png");
     std::string path = "Images\\";
-    path.append(nfilename);
+    path.append(nfilename);*/
 }

@@ -45,20 +45,6 @@ float Config::getValue(std::string name)
     return (NULL);
 }
 
-float Config::getSpeed()
-{
-    std::map<std::string,std::string>::iterator it = Config::config.find("Speed");
-    if(it!=Config::config.end())
-    {
-        std::stringstream strtofloat;
-        float value;
-        strtofloat<<(*it).second;
-        strtofloat>>value;
-        return(value);
-    }
-    return (1.0f);
-}
-
 std::string Config::getString(std::string name)
 {
     std::map<std::string,std::string>::iterator it = Config::config.find(name);

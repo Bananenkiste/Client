@@ -3,6 +3,9 @@
 
 #include "Interface.hpp"
 
+
+class Button;
+
 class InterfaceIntro : public Interface
 {
     public:
@@ -12,6 +15,7 @@ class InterfaceIntro : public Interface
         void update(float step);
         void draw(sf::RenderWindow* window);
     private:
+        std::vector<Button*> buttons;
 
 };
 

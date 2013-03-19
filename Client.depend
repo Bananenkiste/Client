@@ -82,3 +82,145 @@
 	<sstream>
 	<dirent.h>
 
+1363609554 source:n:\repositorys\client\animation.cpp
+	"Animation.hpp"
+	<sstream>
+	<iostream>
+
+1363609554 n:\repositorys\client\animation.hpp
+	"TextureBuffer.hpp"
+	<sfml/Graphics.hpp>
+	<glm/glm.hpp>
+	<vector>
+
+1363698049 n:\repositorys\client\texturebuffer.hpp
+	<iostream>
+	<map>
+	<sfml/Graphics.hpp>
+
+1363711302 source:n:\repositorys\client\button.cpp
+	"Button.hpp"
+	"TextureBuffer.hpp"
+
+1363711445 n:\repositorys\client\button.hpp
+	"sfml\graphics.hpp"
+	"sfml\window.hpp"
+
+1363700326 source:n:\repositorys\client\chatwindow.cpp
+	"Chatwindow.hpp"
+	"Game.hpp"
+	"Message.hpp"
+	"Network.hpp"
+	"TextureBuffer.hpp"
+	"Config.hpp"
+
+1363609550 n:\repositorys\client\chatwindow.hpp
+	<sfml/window.hpp>
+	<sfml/graphics.hpp>
+	<vector>
+
+1363696434 n:\repositorys\client\game.hpp
+	<sfml/window.hpp>
+	<sfml/graphics.hpp>
+	<sfml/system.hpp>
+	<vector>
+	"Player.hpp"
+
+1363127136 n:\repositorys\client\player.hpp
+	<glm/glm.hpp>
+	<iostream>
+	<winsock2.h>
+	<windows.h>
+
+1363609551 n:\repositorys\client\message.hpp
+	<iostream>
+	<sfml/window.hpp>
+	<sfml/graphics.hpp>
+
+1363701235 n:\repositorys\client\network.hpp
+	<iostream>
+	<winsock2.h>
+	<windows.h>
+
+1363709441 n:\repositorys\client\config.hpp
+	<map>
+	<string>
+
+1363709433 source:n:\repositorys\client\config.cpp
+	"Config.hpp"
+	"Fileloader.hpp"
+	<iostream>
+	<vector>
+	<sstream>
+
+1354542640 n:\repositorys\client\fileloader.hpp
+	<string>
+	<vector>
+
+1355239142 source:n:\repositorys\client\fileloader.cpp
+	"Fileloader.hpp"
+	<iostream>
+	<fstream>
+	<algorithm>
+	<sstream>
+	<dirent.h>
+
+1363701180 source:n:\repositorys\client\game.cpp
+	<winsock2.h>
+	<windows.h>
+	<sstream>
+	"Config.hpp"
+	"Game.hpp"
+	"Time.hpp"
+	"Network.hpp"
+	"Player.hpp"
+	"Chatwindow.hpp"
+	"Interface.hpp"
+	"InterfaceIntro.hpp"
+	"TextureBuffer.hpp"
+
+1363609552 n:\repositorys\client\time.hpp
+	<sfml/system.hpp>
+
+1363711352 n:\repositorys\client\interface.hpp
+	<sfml/window.hpp>
+	<sfml/graphics.hpp>
+
+1363708523 n:\repositorys\client\interfaceintro.hpp
+	"Interface.hpp"
+
+1363708202 source:n:\repositorys\client\interface.cpp
+	"Interface.hpp"
+	"TextureBuffer.hpp"
+
+1363711416 source:n:\repositorys\client\interfaceintro.cpp
+	"InterfaceIntro.hpp"
+	"TextureBuffer.hpp"
+	"Button.hpp"
+	"Config.hpp"
+	<sfml/window.hpp>
+	<sfml/system.hpp>
+
+1363707628 source:n:\repositorys\client\main.cpp
+	<iostream>
+	"Game.hpp"
+
+1363609551 source:n:\repositorys\client\message.cpp
+	"Message.hpp"
+
+1363701258 source:n:\repositorys\client\network.cpp
+	"Network.hpp"
+
+1363127157 source:n:\repositorys\client\player.cpp
+	"Player.hpp"
+	"Network.hpp"
+	"Game.hpp"
+	"Chatwindow.hpp"
+
+1363707685 source:n:\repositorys\client\texturebuffer.cpp
+	"TextureBuffer.hpp"
+	"Animation.hpp"
+
+1363609552 source:n:\repositorys\client\time.cpp
+	"Time.hpp"
+

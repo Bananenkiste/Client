@@ -3,8 +3,12 @@
 
 Button::Button(std::string title,int x, int y): name(title)
 {
-    normal = TextureBuffer::LoadTexture(title,true,x,y);
-    over = TextureBuffer::LoadTexture(title+"Click",true,x,y);
+    normal = TextureBuffer::LoadTexture("button",true,x,y);
+    over = TextureBuffer::LoadTexture("button_click",true,x,y);
+    label.setString(name);
+    label.setColor(sf::Color::Cyan);
+    label.setPosition(x-normal->getTexture()->getSize().x/2+5,y-label.getCharacterSize()/2);
+
     active = false;
 }
 
@@ -15,9 +19,6 @@ Button::~Button()
 
 void Button::update(int x, int y)
 {
-    //std::cout<<"Mouse: "<<x<<" ="<<    normal->getPosition().x-normal->getTexture()->getSize().x/2<<"-"<<normal->getPosition().x+normal->getTexture()->getSize().x/2<<std::endl;
-
-
     //check if mouse is over button
     if(normal->getPosition().x+normal->getTexture()->getSize().x/2>x&&
        normal->getPosition().x-normal->getTexture()->getSize().x/2<x&&
@@ -43,6 +44,7 @@ void Button::draw(sf::RenderWindow* win)
     {
         win->draw(*normal);
     }
+    win->draw(label);
 }
 
 bool Button::getActive()
