@@ -14,7 +14,7 @@
 #include "InterfaceIntro.hpp"
 //#include "InterfaceMenu.hpp"
 //#include "InterfaceLobby.hpp"
-//#include "InterfaceServerlist.hpp"
+#include "InterfaceServerlist.hpp"
 #include "TextureBuffer.hpp"
 
 std::vector<Player*> Game::players;
@@ -90,7 +90,7 @@ void Game::changeMode(int newMode)
         }
         case Game::Serverlist :
         {
-            //ui = (Interface*) new InterfaceServerlist(window);
+            ui = (Interface*) new InterfaceIntro(window);
             break;
         }
         default:
