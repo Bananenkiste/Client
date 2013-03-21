@@ -93,7 +93,7 @@
 	<glm/glm.hpp>
 	<vector>
 
-1363698049 n:\repositorys\client\texturebuffer.hpp
+1363871476 n:\repositorys\client\texturebuffer.hpp
 	<iostream>
 	<map>
 	<sfml/Graphics.hpp>
@@ -137,7 +137,7 @@
 	<sfml/window.hpp>
 	<sfml/graphics.hpp>
 
-1363823244 n:\repositorys\client\network.hpp
+1363861621 n:\repositorys\client\network.hpp
 	<iostream>
 	<winsock2.h>
 	<windows.h>
@@ -165,7 +165,7 @@
 	<sstream>
 	<dirent.h>
 
-1363823253 source:n:\repositorys\client\game.cpp
+1363873394 source:n:\repositorys\client\game.cpp
 	<winsock2.h>
 	<windows.h>
 	<sstream>
@@ -177,6 +177,7 @@
 	"Chatwindow.hpp"
 	"Interface.hpp"
 	"InterfaceIntro.hpp"
+	"InterfaceLobby.hpp"
 	"InterfaceServerlist.hpp"
 	"TextureBuffer.hpp"
 
@@ -210,7 +211,7 @@
 1363609551 source:n:\repositorys\client\message.cpp
 	"Message.hpp"
 
-1363823455 source:n:\repositorys\client\network.cpp
+1363861667 source:n:\repositorys\client\network.cpp
 	"Network.hpp"
 
 1363127157 source:n:\repositorys\client\player.cpp
@@ -219,7 +220,7 @@
 	"Game.hpp"
 	"Chatwindow.hpp"
 
-1363707685 source:n:\repositorys\client\texturebuffer.cpp
+1363871713 source:n:\repositorys\client\texturebuffer.cpp
 	"TextureBuffer.hpp"
 	"Animation.hpp"
 
@@ -382,24 +383,34 @@
 	"Config.hpp"
 	"TextureBuffer.hpp"
 
-1363824852 source:n:\repositorys\client\interfaceserverlist.cpp
+1363871765 source:n:\repositorys\client\interfaceserverlist.cpp
 	"InterfaceServerlist.hpp"
 	"Game.hpp"
 	"Network.hpp"
 	"Button.hpp"
 	"Config.hpp"
+	"Server.hpp"
 	"TextureBuffer.hpp"
 
-1363822815 n:\repositorys\client\interfaceserverlist.hpp
+1363867137 n:\repositorys\client\interfaceserverlist.hpp
 	"Interface.hpp"
 	<sfml/window.hpp>
 	<sfml/system.hpp>
 
-1363821400 source:n:\repositorys\client\server.cpp
+1363871742 source:n:\repositorys\client\server.cpp
 	"Server.hpp"
 	"TextureBuffer.hpp"
 
 1363821355 n:\repositorys\client\server.hpp
 	"sfml\graphics.hpp"
 	"sfml\window.hpp"
+
+1363876471 source:n:\repositorys\client\interfacelobby.cpp
+	"InterfaceLobby.hpp"
+	"TextureBuffer.hpp"
+
+1363876382 n:\repositorys\client\interfacelobby.hpp
+	"Interface.hpp"
+	<sfml/window.hpp>
+	<sfml/graphics.hpp>
 

@@ -13,7 +13,7 @@
 #include "Interface.hpp"
 #include "InterfaceIntro.hpp"
 //#include "InterfaceMenu.hpp"
-//#include "InterfaceLobby.hpp"
+#include "InterfaceLobby.hpp"
 #include "InterfaceServerlist.hpp"
 #include "TextureBuffer.hpp"
 
@@ -70,7 +70,7 @@ void Game::changeMode(int newMode)
         case Game::Lobby :
         {
 
-            //ui = (Interface*) new InterfaceLobby(window);
+            ui = (Interface*) new InterfaceLobby(window);
             break;
         }
         case Game::Ingame :
@@ -145,7 +145,7 @@ void Game::init()
     state = Game::Intro;
     std::cout<<"ip:"<<Network::getIP()<<std::endl;
     createWindow(Config::getValue("resolution_x"),Config::getValue("resolution_y"));
-    //TextureBuffer::loadFont(Config::getString("font"));
+    TextureBuffer::loadFont(Config::getString("font"));
     end = false;
 
     std::string aname = "Player";
@@ -174,7 +174,7 @@ void Game::connectToServer(std::string Ip)
             Game::changeMode(Game::Serverlist);
         }
     }
-    Network::sendData(tcpsocket,"IDENT|"+Config::getString("name"));
+    Network::sendTcpData(tcpsocket,"IDENT|"+Config::getString("name"));
     Game::changeMode(Game::Lobby);
     std::cout<<"Connected"<<std::endl;
 }
@@ -263,5 +263,5 @@ void Game::tcpcheck()
 
 void Game::tcpsend(std::string data)
 {
-    Network::sendData(tcpsocket,data);
+    Network::sendTcpData(tcpsocket,data);
 }

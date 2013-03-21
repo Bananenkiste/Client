@@ -7,6 +7,7 @@
 #include <sfml/system.hpp>
 
 class Button;
+class Server;
 
 class InterfaceServerlist : public Interface
 {
@@ -21,8 +22,11 @@ class InterfaceServerlist : public Interface
         void sendRequest();
 
         std::vector<Button*> buttons;
-        std::vector<int> servers;
+        std::vector<Server*> servers;
         int udp;
+        float rqtimer;
+        float rqtimermax;
+        //bool active;
 
 };
 

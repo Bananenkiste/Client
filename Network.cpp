@@ -131,7 +131,7 @@ void Network::WaitForClient(SOCKET node, SOCKET s)
     }
 }
 
-void Network::sendData(SOCKET node,std::string msg)
+void Network::sendTcpData(SOCKET node,std::string msg)
 {
     //char buffer[256];
     //strcpy(buffer,"hello you");
@@ -170,7 +170,7 @@ std::string Network::recieveData(SOCKET node)
 
 void Network::closeSocket(SOCKET node)
 {
-    sendData(node,"CLOSE");
+    sendTcpData(node,"CLOSE");
     closesocket(node);
 }
 
@@ -207,5 +207,80 @@ std::string Network::getIP()
         }
     }
     return ("ERROR");
+}
+
+void Network::broadcastSend(SOCKET node,int port, std::string msg)
+{
+    SOCKADDR_IN addr;
+    addr.sin_family=AF_INET;
+    addr.sin_port=htons(port);
+    addr.sin_addr.s_addr = INADDR_ANY;
+    std::string ip = getIP();
+    ip.resize(ip.find_last_of(".")+1);
+    ip.append("255");
+    addr.sin_addr.s_addr=inet_addr(ip.c_str());
+
+    sendto(node,msg.c_str(),strlen(msg.c_str()),0,(SOCKADDR*)&addr,sizeof(SOCKADDR_IN));
+}
+
+void Network::udpSend(SOCKET node,std::string ip,int port, std::string msg)
+{
+    SOCKADDR_IN addr;
+    addr.sin_family=AF_INET;
+    addr.sin_port=htons(port);
+    addr.sin_addr.s_addr = INADDR_ANY;
+    addr.sin_addr.s_addr=inet_addr(ip.c_str());
+
+    sendto(node,msg.c_str(),strlen(msg.c_str()),0,(SOCKADDR*)&addr,sizeof(SOCKADDR_IN));
+}
+
+std::string Network::broadcastRecieve(SOCKET node)
+{
+    SOCKADDR_IN remoteAddr;
+    int remoteAddrLen=sizeof(SOCKADDR_IN);
+
+    char buf[256];
+    int rc;
+    rc=recvfrom(node,buf,256,0,(SOCKADDR*)&remoteAddr,&remoteAddrLen);
+    if(rc==SOCKET_ERROR)
+    {
+      std::cout<<"Fehler: recvfrom, fehler code:"<<WSAGetLastError()<<std::endl;
+      return("");
+    }
+    else
+    {
+      buf[rc]='\0';
+      return(buf);
+    }
+}
+
+void Network::bindSocket(SOCKET node,int port)
+{
+    SOCKADDR_IN addr;
+    addr.sin_family=AF_INET;
+    addr.sin_port=htons(port);
+    addr.sin_addr.s_addr=INADDR_ANY;
+
+    int rc=bind(node,(SOCKADDR*)&addr,sizeof(SOCKADDR_IN));
+    if(rc==SOCKET_ERROR)
+    {
+        std::cout<<"bind error"<<std::endl;
+        return;
+    }
+}
+
+void Network::bindSocket(SOCKET node)
+{
+    SOCKADDR_IN addr;
+    addr.sin_family=AF_INET;
+    //addr.sin_port=htons(9999999);
+    addr.sin_addr.s_addr=INADDR_ANY;
+
+    int rc=bind(node,(SOCKADDR*)&addr,sizeof(SOCKADDR_IN));
+    if(rc==SOCKET_ERROR)
+    {
+        std::cout<<"bind error"<<std::endl;
+        return;
+    }
 }
 

@@ -13,7 +13,7 @@ class TextureBuffer
         static sf::Sprite* LoadTexture(std::string filename, bool middle);
         static sf::Sprite* LoadTexture(std::string filename, bool middle,float x,float y);
         static Animation LoadAnimation(std::string animname);
-        static void LoadFont(std::string fontname);
+        static void loadFont(std::string fontname);
         static sf::Font getFont();
     private:
         static sf::Font stdfont;

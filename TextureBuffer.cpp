@@ -85,10 +85,15 @@ sf::Font TextureBuffer::getFont()
     return stdfont;
 }
 
-void TextureBuffer::LoadFont(std::string fontname)
+void TextureBuffer::loadFont(std::string fontname)
 {
-    /*std::string nfilename = filename;
-    nfilename.append(".png");
-    std::string path = "Images\\";
-    path.append(nfilename);*/
+    std::string nfilename = fontname;
+    nfilename.append(".ttf");
+    std::string path = "Font\\";
+    path.append(nfilename);
+
+    if(!stdfont.loadFromFile(path))
+    {
+        std::cout<<"Font is missing"<<std::endl;
+    }
 }

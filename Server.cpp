@@ -7,6 +7,7 @@ Server::Server(std::string aName,std::string aIp,int x, int y):name(aName),ip(aI
     normal = TextureBuffer::LoadTexture("button",true,x,y);
     over = TextureBuffer::LoadTexture("button_click",true,x,y);
     label.setString(name);
+    //label.setFont(TextureBuffer::getFont());
     label.setColor(sf::Color::Cyan);
     label.setPosition(x-normal->getTexture()->getSize().x/2+5,y-label.getCharacterSize()/2);
 
