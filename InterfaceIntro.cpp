@@ -8,7 +8,7 @@
 
 InterfaceIntro::InterfaceIntro(sf::RenderWindow* aWindow): Interface(aWindow)
 {
-    background=TextureBuffer::LoadTexture("button",false);
+    background=TextureBuffer::LoadTexture("intro",false);
     background->setPosition(0,0);
 
     buttons.push_back(new Button("Start",Config::getValue("resolution_x")*Config::getValue("intro_startbutton_x"),Config::getValue("resolution_y")*Config::getValue("intro_startbutton_y")));

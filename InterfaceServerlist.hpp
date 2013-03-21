@@ -1,4 +1,4 @@
-#ifndef INTERFACEINTRO_H
+#ifndef INTERFACESERVERLIST_H
 #define INTERFACESERVERLIST_H
 
 #include "Interface.hpp"
@@ -17,7 +17,12 @@ class InterfaceServerlist : public Interface
         void update(float step);
         void draw(sf::RenderWindow* window);
     private:
+        void recieve();
+        void sendRequest();
+
         std::vector<Button*> buttons;
+        std::vector<int> servers;
+        int udp;
 
 };
 

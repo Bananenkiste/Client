@@ -90,7 +90,7 @@ void Game::changeMode(int newMode)
         }
         case Game::Serverlist :
         {
-            ui = (Interface*) new InterfaceIntro(window);
+            ui = (Interface*) new InterfaceServerlist(window);
             break;
         }
         default:
@@ -149,7 +149,7 @@ void Game::init()
     end = false;
 
     std::string aname = "Player";
-    tcpsocket = Network::createSocket();
+    tcpsocket = Network::createTcpSocket();
 
     run();
 }

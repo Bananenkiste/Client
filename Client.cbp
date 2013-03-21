@@ -55,12 +55,16 @@
 		<Unit filename="Interface.hpp" />
 		<Unit filename="InterfaceIntro.cpp" />
 		<Unit filename="InterfaceIntro.hpp" />
+		<Unit filename="InterfaceServerlist.cpp" />
+		<Unit filename="InterfaceServerlist.hpp" />
 		<Unit filename="Message.cpp" />
 		<Unit filename="Message.hpp" />
 		<Unit filename="Network.cpp" />
 		<Unit filename="Network.hpp" />
 		<Unit filename="Player.cpp" />
 		<Unit filename="Player.hpp" />
+		<Unit filename="Server.cpp" />
+		<Unit filename="Server.hpp" />
 		<Unit filename="TextureBuffer.cpp" />
 		<Unit filename="TextureBuffer.hpp" />
 		<Unit filename="Time.cpp" />

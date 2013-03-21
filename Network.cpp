@@ -5,6 +5,13 @@
 bool Network::i;
 FD_SET Network::fdset;
 
+struct udpMessage
+{
+    std::string ip;
+    int port;
+    std::string msg;
+};
+
 
 void Network::init()
 {
@@ -16,13 +23,14 @@ void Network::init()
     }
     i=true;
 }
-SOCKET Network::createSocket()
+
+SOCKET Network::createTcpSocket()
 {
     if(!i)
     {
         init();
     }
-    int node = socket(AF_INET, SOCK_STREAM, 0);
+    int node = socket(AF_INET,SOCK_STREAM, 0);
     if(node == INVALID_SOCKET)
     {
         std::cout << "Socket konnte nicht erstellt werden!" << std::endl;
@@ -31,6 +39,23 @@ SOCKET Network::createSocket()
     std::cout << "Socket konnte erstellt werden!" << std::endl;
     return node;
 }
+
+SOCKET Network::createUdpSocket()
+{
+    if(!i)
+    {
+        init();
+    }
+    int node = socket(AF_INET,SOCK_DGRAM, 0);
+    if(node == INVALID_SOCKET)
+    {
+        std::cout << "Socket konnte nicht erstellt werden!" << std::endl;
+        return NULL;
+    }
+    std::cout << "Socket konnte erstellt werden!" << std::endl;
+    return node;
+}
+
 
 int Network::connectTo(SOCKET Socket,std::string ip,int port)
 {
@@ -115,7 +140,7 @@ void Network::sendData(SOCKET node,std::string msg)
 
 std::string Network::recieveData(SOCKET node)
 {
-    float rc;
+    /*float rc;
     FD_ZERO(&Network::fdset);
     FD_SET(node,&Network::fdset);
     struct timeval timeout;
@@ -131,16 +156,16 @@ std::string Network::recieveData(SOCKET node)
     }
 
     if(FD_ISSET(node,&Network::fdset))
-    {
+    {*/
         char buffer[256];
         int rc;
         rc=recv(node,buffer,256,0);
         buffer[rc]=0;
-        //std::cout<<"Message from client:"<<buffer<<std::endl;
+        std::cout<<"Message from client:"<<buffer<<std::endl;
         std::string msg = buffer;
         return msg;
-    }
-    return("");
+    //}
+    //return("");
 }
 
 void Network::closeSocket(SOCKET node)

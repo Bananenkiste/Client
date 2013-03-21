@@ -10,7 +10,8 @@ class Network
 {
     public:
         static void init();
-        static SOCKET createSocket();
+        static SOCKET createTcpSocket();
+        static SOCKET createUdpSocket();
 
         static int connectTo(SOCKET Socket,std::string ip,int port);
         static SOCKET waitForConnection(SOCKET node);
