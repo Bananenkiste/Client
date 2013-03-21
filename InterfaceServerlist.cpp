@@ -8,6 +8,7 @@
 #include "Server.hpp"
 #include "TextureBuffer.hpp"
 
+
 InterfaceServerlist::InterfaceServerlist(sf::RenderWindow* aWindow): Interface(aWindow)
 {
     background=TextureBuffer::LoadTexture("screen",false);

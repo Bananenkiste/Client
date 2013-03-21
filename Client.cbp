@@ -55,6 +55,8 @@
 		<Unit filename="Interface.hpp" />
 		<Unit filename="InterfaceIntro.cpp" />
 		<Unit filename="InterfaceIntro.hpp" />
+		<Unit filename="InterfaceLobby.cpp" />
+		<Unit filename="InterfaceLobby.hpp" />
 		<Unit filename="InterfaceServerlist.cpp" />
 		<Unit filename="InterfaceServerlist.hpp" />
 		<Unit filename="Message.cpp" />
