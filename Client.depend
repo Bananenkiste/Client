@@ -119,7 +119,7 @@
 	<sfml/graphics.hpp>
 	<vector>
 
-1363696434 n:\repositorys\client\game.hpp
+1364398735 n:\repositorys\client\game.hpp
 	<sfml/window.hpp>
 	<sfml/graphics.hpp>
 	<sfml/system.hpp>
@@ -142,9 +142,10 @@
 	<winsock2.h>
 	<windows.h>
 
-1363709441 n:\repositorys\client\config.hpp
+1364395178 n:\repositorys\client\config.hpp
 	<map>
 	<string>
+	<sfml/system.hpp>
 
 1363709433 source:n:\repositorys\client\config.cpp
 	"Config.hpp"
@@ -165,7 +166,7 @@
 	<sstream>
 	<dirent.h>
 
-1363873394 source:n:\repositorys\client\game.cpp
+1364411656 source:n:\repositorys\client\game.cpp
 	<winsock2.h>
 	<windows.h>
 	<sstream>
@@ -193,11 +194,11 @@
 	<sfml/window.hpp>
 	<sfml/system.hpp>
 
-1363708202 source:n:\repositorys\client\interface.cpp
+1364393471 source:n:\repositorys\client\interface.cpp
 	"Interface.hpp"
 	"TextureBuffer.hpp"
 
-1363824279 source:n:\repositorys\client\interfaceintro.cpp
+1364393471 source:n:\repositorys\client\interfaceintro.cpp
 	"InterfaceIntro.hpp"
 	"Game.hpp"
 	"Button.hpp"
@@ -211,7 +212,7 @@
 1363609551 source:n:\repositorys\client\message.cpp
 	"Message.hpp"
 
-1363861667 source:n:\repositorys\client\network.cpp
+1364415558 source:n:\repositorys\client\network.cpp
 	"Network.hpp"
 
 1363127157 source:n:\repositorys\client\player.cpp
@@ -408,9 +409,11 @@
 	"sfml\graphics.hpp"
 	"sfml\window.hpp"
 
-1363876471 source:n:\repositorys\client\interfacelobby.cpp
+1364405248 source:n:\repositorys\client\interfacelobby.cpp
 	"InterfaceLobby.hpp"
 	"TextureBuffer.hpp"
+	"Game.hpp"
+	"Config.hpp"
 
 1363876382 n:\repositorys\client\interfacelobby.hpp
 	"Interface.hpp"

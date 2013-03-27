@@ -35,6 +35,7 @@ class Game
         static int state;
         static Interface* ui;
         static int tcpsocket;
+        static sf::Thread tcp;
 };
 
 #endif // GAME_H

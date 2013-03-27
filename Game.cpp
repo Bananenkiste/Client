@@ -23,6 +23,7 @@ sf::RenderWindow* Game::window;
 int Game::state;
 Interface* Game::ui;
 int Game::tcpsocket;
+sf::Thread Game::tcp(&Game::tcpcheck);
 
 
 void Game::run()
@@ -36,7 +37,6 @@ void Game::run()
         {
             case Game::Lobby:
             {
-                Game::tcpcheck();
                 for(std::vector<Player*>::iterator it=players.begin();it!=players.end();++it)
                 {
                     (*it)->update(Time::step());
@@ -147,10 +147,6 @@ void Game::init()
     createWindow(Config::getValue("resolution_x"),Config::getValue("resolution_y"));
     TextureBuffer::loadFont(Config::getString("font"));
     end = false;
-
-    std::string aname = "Player";
-    tcpsocket = Network::createTcpSocket();
-
     run();
 }
 
@@ -164,19 +160,19 @@ void Game::createWindow(int x,int y)
 void Game::connectToServer(std::string Ip)
 {
     int i=0;
+    tcpsocket = Network::createTcpSocket();
     while(Network::connectTo(tcpsocket,Ip,40000)!=1)
     {
         i++;
         Chatwindow::addText("Could not connect to Server");
         std::cout<<"Networkfailure Try: "<<i<<std::endl;
-        if(i==10)
+        if(i==5)
         {
             Game::changeMode(Game::Serverlist);
         }
     }
-    Network::sendTcpData(tcpsocket,"IDENT|"+Config::getString("name"));
+    tcp.launch();
     Game::changeMode(Game::Lobby);
-    std::cout<<"Connected"<<std::endl;
 }
 
 void Game::dataInterface(std::string data)
@@ -200,62 +196,66 @@ void Game::console(std::string cmp)
 
 void Game::tcpcheck()
 {
-    if(tcpsocket!= INVALID_SOCKET)
+    while(end!=true)
     {
-        std::string msg = Network::recieveData(tcpsocket);
-        if(strcmp("",msg.c_str())!=0)
+        if(tcpsocket!= INVALID_SOCKET)
         {
-            std::string key = msg.substr(0,msg.find_first_of("|"));
-            msg = msg.substr(msg.find_first_of("|")+1);
-            if(strcmp("CLOSE",key.c_str())==0)
+            std::string msg = Network::recieveData(tcpsocket);
+            if(strcmp("",msg.c_str())!=0)
             {
-                std::string nmsg = "Server down!";
-                Chatwindow::addText(nmsg);
-                closesocket(tcpsocket);
-                tcpsocket = INVALID_SOCKET;
-                Game::changeMode(Game::Serverlist);
-                return;
-            }
-            if(strcmp("MSG",key.c_str())==0)
-            {
-                Chatwindow::addText(msg.substr(msg.find_first_of("|")+1));
-            }
-            if(strcmp("PJOIN",key.c_str())==0)
-            {
-                std::stringstream stream;
-                stream<<msg.substr(0,msg.find_first_of("|"));
-                int id;
-                stream>>id;
-
+                std::string key = msg.substr(0,msg.find_first_of("|"));
                 msg = msg.substr(msg.find_first_of("|")+1);
-                std::string name = msg.substr(0,msg.find_first_of("|"));
-
-                players.push_back(new Player(id,name));
-                std::cout<<"ID:"<<id<<"Name:"<<name<<std::endl;
-            }
-            if(strcmp("PLEAVE",key.c_str())==0)
-            {
-
-                for(std::vector<Player*>::iterator it = players.begin();it!=players.end();++it)
+                if(strcmp("CLOSE",key.c_str())==0)
+                {
+                    std::cout<<"server down"<<std::endl;
+                    std::string nmsg = "Server down!";
+                    Chatwindow::addText(nmsg);
+                    closesocket(tcpsocket);
+                    tcpsocket = INVALID_SOCKET;
+                    Game::changeMode(Game::Serverlist);
+                    return;
+                }
+                if(strcmp("MSG",key.c_str())==0)
+                {
+                    Chatwindow::addText(msg.substr(msg.find_first_of("|")+1));
+                }
+                if(strcmp("IDENT",key.c_str())==0)
+                {
+                    Network::sendTcpData(tcpsocket,"IDENT|"+Config::getString("name"));
+                }
+                if(strcmp("PJOIN",key.c_str())==0)
                 {
                     std::stringstream stream;
                     stream<<msg.substr(0,msg.find_first_of("|"));
-                    int delid;
-                    stream>>delid;
-                    if((*it)->getId()==delid)
+                    int id;
+                    stream>>id;
+                    msg = msg.substr(msg.find_first_of("|")+1);
+                    std::string name = msg.substr(0,msg.find_first_of("|"));
+                    players.push_back(new Player(id,name));
+                    std::cout<<"ID:"<<id<<"Name:"<<name<<std::endl;
+                }
+                if(strcmp("PLEAVE",key.c_str())==0)
+                {
+                    for(std::vector<Player*>::iterator it = players.begin();it!=players.end();++it)
                     {
-                        Chatwindow::addText((*it)->getName()+" left the game.");
-                        players.erase(it);
+                        std::stringstream stream;
+                        stream<<msg.substr(0,msg.find_first_of("|"));
+                        int delid;
+                        stream>>delid;
+                        if((*it)->getId()==delid)
+                        {
+                            Chatwindow::addText((*it)->getName()+" left the game.");
+                            players.erase(it);
+                        }
                     }
                 }
-
-            }
-            if(strcmp("PACT",key.c_str())==0)
-            {
-                std::stringstream stream;
-                stream<<msg.substr(0,msg.find_first_of("|"));
-                int id;
-                stream>>id;
+                if(strcmp("PACT",key.c_str())==0)
+                {
+                    std::stringstream stream;
+                    stream<<msg.substr(0,msg.find_first_of("|"));
+                    int id;
+                    stream>>id;
+                }
             }
         }
     }
@@ -263,5 +263,8 @@ void Game::tcpcheck()
 
 void Game::tcpsend(std::string data)
 {
-    Network::sendTcpData(tcpsocket,data);
+    if(tcpsocket!=INVALID_SOCKET)
+    {
+        Network::sendTcpData(tcpsocket,data);
+    }
 }

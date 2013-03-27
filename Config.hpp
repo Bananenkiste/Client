@@ -3,6 +3,8 @@
 
 #include <map>
 #include <string>
+#include <sfml/system.hpp>
+
 
 class Config
 {

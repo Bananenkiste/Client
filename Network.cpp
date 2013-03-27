@@ -71,12 +71,6 @@ int Network::connectTo(SOCKET Socket,std::string ip,int port)
         return -1;
     }
     return 1;
-    /*char buffer[256];
-    strcpy(buffer,"hello you");
-    send(Socket,buffer,strlen(buffer),0);
-    std::cout << "Verbindung erfolgreich!" << std::endl;
-    closesocket(Socket);
-    */
 }
 
 SOCKET Network::waitForConnection(SOCKET node)
@@ -97,13 +91,6 @@ SOCKET Network::waitForConnection(SOCKET node)
                 s = accept( node, NULL, NULL );
                 closesocket(node);
                 return s;
-
-                /*std::cout<<"Wait for data"<<std::endl;
-                char buffer[256];
-                int rc;
-                rc=recv(s,buffer,256,0);
-                buffer[rc]=0;
-                std::cout<<"Message from client:"<<buffer<<std::endl;*/
             }
             while(1);
         }
@@ -133,39 +120,19 @@ void Network::WaitForClient(SOCKET node, SOCKET s)
 
 void Network::sendTcpData(SOCKET node,std::string msg)
 {
-    //char buffer[256];
-    //strcpy(buffer,"hello you");
+    std::cout<<"out:"<<msg<<std::endl;
     send(node,msg.c_str(),strlen(msg.c_str()),0);
 }
 
 std::string Network::recieveData(SOCKET node)
 {
-    /*float rc;
-    FD_ZERO(&Network::fdset);
-    FD_SET(node,&Network::fdset);
-    struct timeval timeout;
-    timeout.tv_sec=0.01;
-    timeout.tv_usec=0;
-
-    rc=select(0,&Network::fdset,NULL,NULL,&timeout);
-    //std::cout<<"RC: "<<rc<<std::endl;
-    if(rc==SOCKET_ERROR)
-    {
-      //printf("Fehler: select, fehler code: %s\n",WSAGetLastError());
-      return("CLOSE");
-    }
-
-    if(FD_ISSET(node,&Network::fdset))
-    {*/
         char buffer[256];
         int rc;
         rc=recv(node,buffer,256,0);
         buffer[rc]=0;
-        std::cout<<"Message from client:"<<buffer<<std::endl;
+        std::cout<<"N-Message:"<<buffer<<std::endl;
         std::string msg = buffer;
         return msg;
-    //}
-    //return("");
 }
 
 void Network::closeSocket(SOCKET node)
@@ -219,7 +186,6 @@ void Network::broadcastSend(SOCKET node,int port, std::string msg)
     ip.resize(ip.find_last_of(".")+1);
     ip.append("255");
     addr.sin_addr.s_addr=inet_addr(ip.c_str());
-
     sendto(node,msg.c_str(),strlen(msg.c_str()),0,(SOCKADDR*)&addr,sizeof(SOCKADDR_IN));
 }
 
@@ -273,7 +239,6 @@ void Network::bindSocket(SOCKET node)
 {
     SOCKADDR_IN addr;
     addr.sin_family=AF_INET;
-    //addr.sin_port=htons(9999999);
     addr.sin_addr.s_addr=INADDR_ANY;
 
     int rc=bind(node,(SOCKADDR*)&addr,sizeof(SOCKADDR_IN));
