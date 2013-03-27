@@ -227,31 +227,31 @@
 1363609552 source:n:\repositorys\client\time.cpp
 	"Time.hpp"
 
-1363765443 source:c:\users\bananenkiste\documents\github\client\animation.cpp
+1363942852 source:c:\users\bananenkiste\documents\github\client\animation.cpp
 	"Animation.hpp"
 	<sstream>
 	<iostream>
 
-1363765444 c:\users\bananenkiste\documents\github\client\animation.hpp
+1363942853 c:\users\bananenkiste\documents\github\client\animation.hpp
 	"TextureBuffer.hpp"
 	<sfml/Graphics.hpp>
 	<glm/glm.hpp>
 	<vector>
 
-1363765447 c:\users\bananenkiste\documents\github\client\texturebuffer.hpp
+1363942855 c:\users\bananenkiste\documents\github\client\texturebuffer.hpp
 	<iostream>
 	<map>
 	<sfml/Graphics.hpp>
 
-1363765444 source:c:\users\bananenkiste\documents\github\client\button.cpp
+1363942853 source:c:\users\bananenkiste\documents\github\client\button.cpp
 	"Button.hpp"
 	"TextureBuffer.hpp"
 
-1363765444 c:\users\bananenkiste\documents\github\client\button.hpp
+1363942853 c:\users\bananenkiste\documents\github\client\button.hpp
 	"sfml\graphics.hpp"
 	"sfml\window.hpp"
 
-1363765444 source:c:\users\bananenkiste\documents\github\client\chatwindow.cpp
+1363942853 source:c:\users\bananenkiste\documents\github\client\chatwindow.cpp
 	"Chatwindow.hpp"
 	"Game.hpp"
 	"Message.hpp"
@@ -259,50 +259,50 @@
 	"TextureBuffer.hpp"
 	"Config.hpp"
 
-1363765444 c:\users\bananenkiste\documents\github\client\chatwindow.hpp
+1363942853 c:\users\bananenkiste\documents\github\client\chatwindow.hpp
 	<sfml/window.hpp>
 	<sfml/graphics.hpp>
 	<vector>
 
-1363765446 c:\users\bananenkiste\documents\github\client\game.hpp
+1363942854 c:\users\bananenkiste\documents\github\client\game.hpp
 	<sfml/window.hpp>
 	<sfml/graphics.hpp>
 	<sfml/system.hpp>
 	<vector>
 	"Player.hpp"
 
-1363765447 c:\users\bananenkiste\documents\github\client\player.hpp
+1363942855 c:\users\bananenkiste\documents\github\client\player.hpp
 	<glm/glm.hpp>
 	<iostream>
 	<winsock2.h>
 	<windows.h>
 
-1363765446 c:\users\bananenkiste\documents\github\client\message.hpp
+1363942855 c:\users\bananenkiste\documents\github\client\message.hpp
 	<iostream>
 	<sfml/window.hpp>
 	<sfml/graphics.hpp>
 
-1363765447 c:\users\bananenkiste\documents\github\client\network.hpp
+1363942855 c:\users\bananenkiste\documents\github\client\network.hpp
 	<iostream>
 	<winsock2.h>
 	<windows.h>
 
-1363765445 c:\users\bananenkiste\documents\github\client\config.hpp
+1363942854 c:\users\bananenkiste\documents\github\client\config.hpp
 	<map>
 	<string>
 
-1363765445 source:c:\users\bananenkiste\documents\github\client\config.cpp
+1363942853 source:c:\users\bananenkiste\documents\github\client\config.cpp
 	"Config.hpp"
 	"Fileloader.hpp"
 	<iostream>
 	<vector>
 	<sstream>
 
-1363765446 c:\users\bananenkiste\documents\github\client\fileloader.hpp
+1363942854 c:\users\bananenkiste\documents\github\client\fileloader.hpp
 	<string>
 	<vector>
 
-1363765445 source:c:\users\bananenkiste\documents\github\client\fileloader.cpp
+1363942854 source:c:\users\bananenkiste\documents\github\client\fileloader.cpp
 	"Fileloader.hpp"
 	<iostream>
 	<fstream>
@@ -310,7 +310,7 @@
 	<sstream>
 	<dirent.h>
 
-1363770368 source:c:\users\bananenkiste\documents\github\client\game.cpp
+1363942854 source:c:\users\bananenkiste\documents\github\client\game.cpp
 	<winsock2.h>
 	<windows.h>
 	<sstream>
@@ -322,65 +322,68 @@
 	"Chatwindow.hpp"
 	"Interface.hpp"
 	"InterfaceIntro.hpp"
+	"InterfaceLobby.hpp"
 	"InterfaceServerlist.hpp"
 	"TextureBuffer.hpp"
 
-1363765447 c:\users\bananenkiste\documents\github\client\time.hpp
+1363942855 c:\users\bananenkiste\documents\github\client\time.hpp
 	<sfml/system.hpp>
 
-1363765446 c:\users\bananenkiste\documents\github\client\interface.hpp
+1363942854 c:\users\bananenkiste\documents\github\client\interface.hpp
 	<sfml/window.hpp>
 	<sfml/graphics.hpp>
 
-1363765446 c:\users\bananenkiste\documents\github\client\interfaceintro.hpp
+1363942854 c:\users\bananenkiste\documents\github\client\interfaceintro.hpp
 	"Interface.hpp"
 	<sfml/window.hpp>
 	<sfml/system.hpp>
 
-1363765446 source:c:\users\bananenkiste\documents\github\client\interface.cpp
+1364387096 source:c:\users\bananenkiste\documents\github\client\interface.cpp
 	"Interface.hpp"
 	"TextureBuffer.hpp"
 
-1363770109 source:c:\users\bananenkiste\documents\github\client\interfaceintro.cpp
+1364387039 source:c:\users\bananenkiste\documents\github\client\interfaceintro.cpp
 	"InterfaceIntro.hpp"
 	"Game.hpp"
 	"Button.hpp"
 	"Config.hpp"
 	"TextureBuffer.hpp"
 
-1363765447 source:c:\users\bananenkiste\documents\github\client\main.cpp
+1363942854 source:c:\users\bananenkiste\documents\github\client\main.cpp
 	<iostream>
 	"Game.hpp"
 
-1363765446 source:c:\users\bananenkiste\documents\github\client\message.cpp
+1363942854 source:c:\users\bananenkiste\documents\github\client\message.cpp
 	"Message.hpp"
 
-1363765446 source:c:\users\bananenkiste\documents\github\client\network.cpp
+1363942855 source:c:\users\bananenkiste\documents\github\client\network.cpp
 	"Network.hpp"
 
-1363765447 source:c:\users\bananenkiste\documents\github\client\player.cpp
+1363942855 source:c:\users\bananenkiste\documents\github\client\player.cpp
 	"Player.hpp"
 	"Network.hpp"
 	"Game.hpp"
 	"Chatwindow.hpp"
 
-1363765447 source:c:\users\bananenkiste\documents\github\client\texturebuffer.cpp
+1363942855 source:c:\users\bananenkiste\documents\github\client\texturebuffer.cpp
 	"TextureBuffer.hpp"
 	"Animation.hpp"
 
-1363765447 source:c:\users\bananenkiste\documents\github\client\time.cpp
+1363942855 source:c:\users\bananenkiste\documents\github\client\time.cpp
 	"Time.hpp"
 
-1363768215 c:\users\bananenkiste\documents\github\client\interfaceserverlist.hpp
+1363942854 c:\users\bananenkiste\documents\github\client\interfaceserverlist.hpp
 	"Interface.hpp"
 	<sfml/window.hpp>
 	<sfml/system.hpp>
 
-1363768298 source:c:\users\bananenkiste\documents\github\client\interfaceserverlist.cpp
+1363942854 source:c:\users\bananenkiste\documents\github\client\interfaceserverlist.cpp
 	"InterfaceServerlist.hpp"
 	"Game.hpp"
+	"Network.hpp"
 	"Button.hpp"
 	"Config.hpp"
+	"Server.hpp"
 	"TextureBuffer.hpp"
 
 1363896382 source:n:\repositorys\client\interfaceserverlist.cpp
@@ -413,4 +416,22 @@
 	"Interface.hpp"
 	<sfml/window.hpp>
 	<sfml/graphics.hpp>
+
+1363942846 c:\users\bananenkiste\documents\github\client\interfacelobby.hpp
+	"Interface.hpp"
+	<sfml/window.hpp>
+	<sfml/graphics.hpp>
+
+1363942846 source:c:\users\bananenkiste\documents\github\client\interfacelobby.cpp
+	"InterfaceLobby.hpp"
+	"TextureBuffer.hpp"
+	"Game.hpp"
+
+1363942846 c:\users\bananenkiste\documents\github\client\server.hpp
+	"sfml\graphics.hpp"
+	"sfml\window.hpp"
+
+1363942846 source:c:\users\bananenkiste\documents\github\client\server.cpp
+	"Server.hpp"
+	"TextureBuffer.hpp"
 

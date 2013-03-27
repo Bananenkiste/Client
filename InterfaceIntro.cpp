@@ -8,8 +8,8 @@
 
 InterfaceIntro::InterfaceIntro(sf::RenderWindow* aWindow): Interface(aWindow)
 {
-    background=TextureBuffer::LoadTexture("intro",false);
-    background->setPosition(0,0);
+    //background=TextureBuffer::LoadTexture("intro",false);
+    //background->setPosition(0,0);
 
     buttons.push_back(new Button("Start",Config::getValue("resolution_x")*Config::getValue("intro_startbutton_x"),Config::getValue("resolution_y")*Config::getValue("intro_startbutton_y")));
 
@@ -46,7 +46,10 @@ void InterfaceIntro::update(float step)
 
 void InterfaceIntro::draw(sf::RenderWindow* window)
 {
-    window->draw(*background);
+    if(background!=NULL)
+    {
+        window->draw(*background);
+    }
     for(std::vector<Button*>::iterator it=buttons.begin();it!=buttons.end();++it)
     {
         (*it)->draw(window);
