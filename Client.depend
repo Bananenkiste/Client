@@ -405,9 +405,10 @@
 	"sfml\graphics.hpp"
 	"sfml\window.hpp"
 
-1363876471 source:n:\repositorys\client\interfacelobby.cpp
+1363896466 source:n:\repositorys\client\interfacelobby.cpp
 	"InterfaceLobby.hpp"
 	"TextureBuffer.hpp"
+	"Game.hpp"
 
 1363876382 n:\repositorys\client\interfacelobby.hpp
 	"Interface.hpp"
