@@ -265,7 +265,7 @@
 	<sfml/graphics.hpp>
 	<vector>
 
-1363942854 c:\users\bananenkiste\documents\github\client\game.hpp
+1364425187 c:\users\bananenkiste\documents\github\client\game.hpp
 	<sfml/window.hpp>
 	<sfml/graphics.hpp>
 	<sfml/system.hpp>
@@ -288,9 +288,10 @@
 	<winsock2.h>
 	<windows.h>
 
-1363942854 c:\users\bananenkiste\documents\github\client\config.hpp
+1364425187 c:\users\bananenkiste\documents\github\client\config.hpp
 	<map>
 	<string>
+	<sfml/system.hpp>
 
 1363942853 source:c:\users\bananenkiste\documents\github\client\config.cpp
 	"Config.hpp"
@@ -311,7 +312,7 @@
 	<sstream>
 	<dirent.h>
 
-1363942854 source:c:\users\bananenkiste\documents\github\client\game.cpp
+1364464089 source:c:\users\bananenkiste\documents\github\client\game.cpp
 	<winsock2.h>
 	<windows.h>
 	<sstream>
@@ -343,7 +344,7 @@
 	"Interface.hpp"
 	"TextureBuffer.hpp"
 
-1364387039 source:c:\users\bananenkiste\documents\github\client\interfaceintro.cpp
+1364387126 source:c:\users\bananenkiste\documents\github\client\interfaceintro.cpp
 	"InterfaceIntro.hpp"
 	"Game.hpp"
 	"Button.hpp"
@@ -357,10 +358,10 @@
 1363942854 source:c:\users\bananenkiste\documents\github\client\message.cpp
 	"Message.hpp"
 
-1363942855 source:c:\users\bananenkiste\documents\github\client\network.cpp
+1364425187 source:c:\users\bananenkiste\documents\github\client\network.cpp
 	"Network.hpp"
 
-1363942855 source:c:\users\bananenkiste\documents\github\client\player.cpp
+1364464054 source:c:\users\bananenkiste\documents\github\client\player.cpp
 	"Player.hpp"
 	"Network.hpp"
 	"Game.hpp"
@@ -378,7 +379,7 @@
 	<sfml/window.hpp>
 	<sfml/system.hpp>
 
-1363942854 source:c:\users\bananenkiste\documents\github\client\interfaceserverlist.cpp
+1364462985 source:c:\users\bananenkiste\documents\github\client\interfaceserverlist.cpp
 	"InterfaceServerlist.hpp"
 	"Game.hpp"
 	"Network.hpp"
@@ -425,10 +426,11 @@
 	<sfml/window.hpp>
 	<sfml/graphics.hpp>
 
-1363942846 source:c:\users\bananenkiste\documents\github\client\interfacelobby.cpp
+1364425187 source:c:\users\bananenkiste\documents\github\client\interfacelobby.cpp
 	"InterfaceLobby.hpp"
 	"TextureBuffer.hpp"
 	"Game.hpp"
+	"Config.hpp"
 
 1363942846 c:\users\bananenkiste\documents\github\client\server.hpp
 	"sfml\graphics.hpp"

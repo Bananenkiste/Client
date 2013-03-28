@@ -10,6 +10,7 @@ Player::Player(int aid,std::string aname): name(aname), id(aid)
 
 Player::Player()
 {
+
 }
 
 Player::~Player()

@@ -182,7 +182,8 @@ void Game::dataInterface(std::string data)
 
 void Game::console(std::string cmp)
 {
-    if(strcmp(cmp.substr(1,8).c_str(),"connect")==0)
+    std::cout<<"cmd:"<<cmp.substr(0,7)<<std::endl;
+    if(strcmp(cmp.substr(0,7).c_str(),"connect")==0)
     {
         std::cout<<"connect befehl"<<std::endl;
         std::cout<<(cmp.substr(8,cmp.length()).c_str())<<std::endl;
@@ -231,8 +232,20 @@ void Game::tcpcheck()
                     stream>>id;
                     msg = msg.substr(msg.find_first_of("|")+1);
                     std::string name = msg.substr(0,msg.find_first_of("|"));
-                    players.push_back(new Player(id,name));
-                    std::cout<<"ID:"<<id<<"Name:"<<name<<std::endl;
+                    bool nplayer=true;
+                    for(std::vector<Player*>::iterator it = players.begin();it!=players.end();++it)
+                    {
+                        if(id==(*it)->getId())
+                        {
+                            nplayer=false;
+                        }
+                    }
+                    if(nplayer)
+                    {
+                        players.push_back(new Player(id,name));
+                        std::cout<<"ID:"<<id<<"Name:"<<name<<std::endl;
+                    }
+
                 }
                 if(strcmp("PLEAVE",key.c_str())==0)
                 {

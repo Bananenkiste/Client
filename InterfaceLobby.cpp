@@ -26,7 +26,7 @@ void InterfaceLobby::draw(sf::RenderWindow* window)
 {
     if(background!=NULL)
     {
-        window->draw(*background);
+        //window->draw(*background);
     }
 }
 

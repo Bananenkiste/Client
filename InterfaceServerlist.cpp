@@ -77,7 +77,10 @@ void InterfaceServerlist::update(float step)
 
 void InterfaceServerlist::draw(sf::RenderWindow* window)
 {
-    window->draw(*background);
+    if(background)
+    {
+       //window->draw(*background);
+    }
     for(std::vector<Button*>::iterator it=buttons.begin();it!=buttons.end();++it)
     {
         (*it)->draw(window);
