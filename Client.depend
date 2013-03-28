@@ -265,18 +265,19 @@
 	<sfml/graphics.hpp>
 	<vector>
 
-1364425187 c:\users\bananenkiste\documents\github\client\game.hpp
+1364468225 c:\users\bananenkiste\documents\github\client\game.hpp
 	<sfml/window.hpp>
 	<sfml/graphics.hpp>
 	<sfml/system.hpp>
 	<vector>
 	"Player.hpp"
 
-1363942855 c:\users\bananenkiste\documents\github\client\player.hpp
+1364468447 c:\users\bananenkiste\documents\github\client\player.hpp
 	<glm/glm.hpp>
 	<iostream>
 	<winsock2.h>
 	<windows.h>
+	<sfml/graphics.hpp>
 
 1363942855 c:\users\bananenkiste\documents\github\client\message.hpp
 	<iostream>
@@ -426,10 +427,11 @@
 	<sfml/window.hpp>
 	<sfml/graphics.hpp>
 
-1364467087 source:c:\users\bananenkiste\documents\github\client\interfacelobby.cpp
+1364468398 source:c:\users\bananenkiste\documents\github\client\interfacelobby.cpp
 	"InterfaceLobby.hpp"
 	"TextureBuffer.hpp"
 	"Game.hpp"
+	"Player.hpp"
 	"Config.hpp"
 
 1363942846 c:\users\bananenkiste\documents\github\client\server.hpp

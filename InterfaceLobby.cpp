@@ -2,6 +2,7 @@
 #include "TextureBuffer.hpp"
 
 #include "Game.hpp"
+#include "Player.hpp"
 #include "Config.hpp"
 
 InterfaceLobby::InterfaceLobby(sf::RenderWindow* aWindow): Interface(aWindow)
@@ -26,6 +27,13 @@ void InterfaceLobby::draw(sf::RenderWindow* window)
     {
         //window->draw(*background);
     }
+    /*std::vector<Player*> temp = Game::getPlayers();
+    for(std::vector<Player*>::iterator it = temp.begin();it!=temp.end();++it)
+    {
+        window->draw((*it)->getPlayerButton());
+    }*/
+
+
 }
 
 void InterfaceLobby::handleData(std::string data)

@@ -5,6 +5,7 @@
 #include <iostream>
 #include <winsock2.h>
 #include <windows.h>
+#include <sfml/graphics.hpp>
 
 class Player
 {
@@ -20,6 +21,8 @@ class Player
         SOCKET getSocket();
         void update(float step);
         void setVariables();
+        void draw();
+        sf::Sprite getPlayerButton();
 
     protected:
     private:
@@ -27,6 +30,8 @@ class Player
         std::string name;
         glm::mat3 position;
         SOCKET socket;
+        sf::Sprite player;
+        sf::Sprite playerbutton;
 };
 
 #endif // PLAYER_H

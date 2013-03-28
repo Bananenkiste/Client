@@ -25,10 +25,12 @@ class Game
         static void console(std::string cmp);
         static void tcpcheck();
         static void tcpsend(std::string data);
+        static std::vector<Player*> getPlayers();
+
+
 
     private:
 		static void windowControl();
-
         static sf::RenderWindow* window;
         static std::vector<Player*> players;
         static bool end;
