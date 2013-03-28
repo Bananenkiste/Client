@@ -8,8 +8,6 @@ InterfaceLobby::InterfaceLobby(sf::RenderWindow* aWindow): Interface(aWindow)
 {
     background=TextureBuffer::LoadTexture("work",false);
     background->setPosition(0,0);
-
-    //Game::tcpsend("test");
 }
 
 InterfaceLobby::~InterfaceLobby()
