@@ -17,7 +17,7 @@ InterfaceServerlist::InterfaceServerlist(sf::RenderWindow* aWindow): Interface(a
     buttons.push_back(new Button("Search",Config::getValue("resolution_x")*Config::getValue("serverlist_refreshbutton_x"),Config::getValue("resolution_y")*Config::getValue("serverlist_refreshbutton_y")));
 
     udp = Network::createUdpSocket();
-    Network::bindSocket(udp,40002);
+    Network::bindSocket(udp);
 
     sf::Thread* udprec= new sf::Thread(&InterfaceServerlist::recieve,this);
     udprec->launch();
