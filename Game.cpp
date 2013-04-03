@@ -214,6 +214,7 @@ void Game::tcpcheck()
                     closesocket(tcpsocket);
                     tcpsocket = INVALID_SOCKET;
                     Game::changeMode(Game::Serverlist);
+                    tcp.terminate();
                     return;
                 }
                 if(strcmp("MSG",key.c_str())==0)
@@ -249,12 +250,12 @@ void Game::tcpcheck()
                 }
                 if(strcmp("PLEAVE",key.c_str())==0)
                 {
+                    std::stringstream stream;
+                    stream<<msg.substr(0,msg.find_first_of("|"));
+                    int delid;
+                    stream>>delid;
                     for(std::vector<Player*>::iterator it = players.begin();it!=players.end();++it)
                     {
-                        std::stringstream stream;
-                        stream<<msg.substr(0,msg.find_first_of("|"));
-                        int delid;
-                        stream>>delid;
                         if((*it)->getId()==delid)
                         {
                             Chatwindow::addText((*it)->getName()+" left the game.");
@@ -264,10 +265,21 @@ void Game::tcpcheck()
                 }
                 if(strcmp("PACT",key.c_str())==0)
                 {
-                    std::stringstream stream;
-                    stream<<msg.substr(0,msg.find_first_of("|"));
-                    int id;
-                    stream>>id;
+                    if(strcmp(msg.substr(0,msg.find_first_of("|")).c_str(),"RDY")==0)
+                    {
+                        msg = msg.substr(msg.find_first_of("|")+1);
+                        std::stringstream stream;
+                        stream<<msg.substr(0,msg.find_first_of("|"));
+                        int id;
+                        stream>>id;
+                        for(std::vector<Player*>::iterator it = players.begin();it!=players.end();++it)
+                        {
+                            if((*it)->getId()==id)
+                            {
+                                (*it)->setActive();
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -280,4 +292,9 @@ void Game::tcpsend(std::string data)
     {
         Network::sendTcpData(tcpsocket,data);
     }
+}
+
+std::vector<Player*> Game::getPlayers()
+{
+    return(players);
 }

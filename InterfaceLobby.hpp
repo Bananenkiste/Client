@@ -6,6 +6,7 @@
 #include <sfml/window.hpp>
 #include <sfml/graphics.hpp>
 
+class Button;
 
 class InterfaceLobby : public Interface
 {
@@ -16,9 +17,14 @@ class InterfaceLobby : public Interface
         virtual void update(float step);
         virtual void draw(sf::RenderWindow* window);
         virtual void handleData(std::string data);
+
+        void sendRdy();
     protected:
         sf::RenderWindow* window;
         sf::Sprite* background;
+        std::vector<Button*> buttons;
+        float rqtimer;
+        float rqtimermax;
 };
 
 #endif // INTERFACE_H

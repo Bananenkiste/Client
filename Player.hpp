@@ -22,7 +22,8 @@ class Player
         void update(float step);
         void setVariables();
         void draw();
-        sf::Sprite getPlayerButton();
+        void drawLabel(sf::RenderWindow* win,float x,float y);
+        void setActive();
 
     protected:
     private:
@@ -31,7 +32,10 @@ class Player
         glm::mat3 position;
         SOCKET socket;
         sf::Sprite player;
-        sf::Sprite playerbutton;
+        sf::Sprite* playerlabel1;
+        sf::Sprite* playerlabel2;
+        sf::Text label;
+        bool active;
 };
 
 #endif // PLAYER_H
