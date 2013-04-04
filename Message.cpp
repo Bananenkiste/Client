@@ -5,7 +5,7 @@ Message::Message(std::string text)
     message.setString(text);
     message.setCharacterSize(12);
     message.setStyle(sf::Text::Regular);
-    message.setColor(sf::Color::White);
+    message.setColor(sf::Color::Cyan);
 }
 
 Message::~Message()

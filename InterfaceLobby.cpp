@@ -59,7 +59,7 @@ void InterfaceLobby::draw(sf::RenderWindow* window)
 {
     if(background!=NULL)
     {
-        window->draw(*background);
+        //window->draw(*background);
     }
     for(std::vector<Button*>::iterator it=buttons.begin();it!=buttons.end();++it)
     {

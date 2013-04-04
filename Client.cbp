@@ -61,6 +61,8 @@
 		<Unit filename="InterfaceServerlist.hpp" />
 		<Unit filename="Message.cpp" />
 		<Unit filename="Message.hpp" />
+		<Unit filename="Mutex.cpp" />
+		<Unit filename="Mutex.hpp" />
 		<Unit filename="Network.cpp" />
 		<Unit filename="Network.hpp" />
 		<Unit filename="Player.cpp" />

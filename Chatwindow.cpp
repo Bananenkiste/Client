@@ -4,6 +4,9 @@
 #include "Network.hpp"
 #include "TextureBuffer.hpp"
 #include "Config.hpp"
+#include "Mutex.hpp"
+
+#include <sfml/system.hpp>
 
 
 std::vector<Message*> Chatwindow::chat;
@@ -44,7 +47,7 @@ void Chatwindow::update(float step,sf::RenderWindow* window)
             active=true;
             spkeyrtime-=step;
             text.setCharacterSize(12);
-            //text.setFont(*TextureBuffer::getFont());
+            //text.setFont(TextureBuffer::getFont());
             text.setStyle(sf::Text::Regular);
             text.setColor(sf::Color::Blue);
             text.setPosition(20,Config::getValue("resolution_y")-20);
@@ -298,6 +301,7 @@ void Chatwindow::draw(sf::RenderWindow* window)
 
 void Chatwindow::addText(std::string msg)
 {
+    //Mutex::chat.lock();
     chat.insert(chat.begin(),new Message(msg));
     if(chat.size()>10)
     {
@@ -307,4 +311,5 @@ void Chatwindow::addText(std::string msg)
     {
         chat[x]->setPosition(20,Config::getValue("resolution_y")-40-(20*x));
     }
+    //Mutex::chat.unlock();
 }

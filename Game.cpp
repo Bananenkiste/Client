@@ -182,11 +182,11 @@ void Game::dataInterface(std::string data)
 
 void Game::console(std::string cmp)
 {
-    std::cout<<"cmd:"<<cmp.substr(0,7)<<std::endl;
+    //std::cout<<"cmd:"<<cmp.substr(0,7)<<std::endl;
     if(strcmp(cmp.substr(0,7).c_str(),"connect")==0)
     {
-        std::cout<<"connect befehl"<<std::endl;
-        std::cout<<(cmp.substr(8,cmp.length()).c_str())<<std::endl;
+        //std::cout<<"connect befehl"<<std::endl;
+        //std::cout<<(cmp.substr(8,cmp.length()).c_str())<<std::endl;
         Game::connectToServer(cmp.substr(8,cmp.length()).c_str());
     }
     else if(strcmp(cmp.c_str(),"ip")==0)
