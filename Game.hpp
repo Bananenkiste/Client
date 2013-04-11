@@ -13,7 +13,7 @@ class Interface;
 class Game
 {
     public:
-        enum State{Intro,Name,Menu,Lobby,Ingame,Debrief,Settings,Serverlist};
+        enum State{INTRO,LOGIN,MENU,SERVERLIST,LOBBY,LOADING,PREGAME,INGAME,DEBRIEF,SETTINGS};
 
         static void init();
         static void run();

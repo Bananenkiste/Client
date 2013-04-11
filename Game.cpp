@@ -13,6 +13,8 @@
 #include "Interface.hpp"
 #include "InterfaceIntro.hpp"
 //#include "InterfaceMenu.hpp"
+#include "InterfaceLoading.hpp"
+#include "InterfacePregame.hpp"
 #include "InterfaceLobby.hpp"
 #include "InterfaceServerlist.hpp"
 #include "TextureBuffer.hpp"
@@ -35,7 +37,7 @@ void Game::run()
         ui->update(Time::step());
         switch(state)
         {
-            case Game::Lobby:
+            case Game::LOBBY:
             {
                 for(std::vector<Player*>::iterator it=players.begin();it!=players.end();++it)
                 {
@@ -57,38 +59,48 @@ void Game::changeMode(int newMode)
 {
     switch(newMode)
     {
-        case Game::Intro :
+        case Game::INTRO :
         {
             ui = (Interface*) new InterfaceIntro(window);
             break;
         }
-        case Game::Menu :
+        case Game::MENU :
         {
             //ui = (Interface*) new InterfaceMenu(window);
             break;
         }
-        case Game::Lobby :
+        case Game::LOBBY :
         {
 
             ui = (Interface*) new InterfaceLobby(window);
             break;
         }
-        case Game::Ingame :
+        case Game::LOADING :
+        {
+            ui = (Interface*) new InterfaceLoading(window);
+            break;
+        }
+        case Game::PREGAME :
+        {
+            ui = (Interface*) new InterfacePregame(window);
+            break;
+        }
+        case Game::INGAME :
         {
             //ui = (Interface*) new InterfaceMenu(window);
             break;
         }
-        case Game::Debrief :
+        case Game::DEBRIEF :
         {
             //ui = (Interface*) new InterfaceMenu(window);
             break;
         }
-        case Game::Settings :
+        case Game::SETTINGS :
         {
             //ui = (Interface*) new InterfaceMenu(window);
             break;
         }
-        case Game::Serverlist :
+        case Game::SERVERLIST :
         {
             ui = (Interface*) new InterfaceServerlist(window);
             break;
@@ -117,12 +129,12 @@ void Game::windowControl()
 void Game::draw()
 {
     window->clear();
-    window->pushGLStates();
+    //window->pushGLStates();
 
     ui->draw(window);
     Chatwindow::draw(window);
 
-    window->popGLStates();
+    //window->popGLStates();
     window->display();
 }
 
@@ -142,7 +154,7 @@ void Game::init()
     /////////////////  Startup window  //////////////
     /////////////////////////////////////////////////
     Config::load();
-    state = Game::Intro;
+    state = Game::INTRO;
     std::cout<<"ip:"<<Network::getIP()<<std::endl;
     createWindow(Config::getValue("resolution_x"),Config::getValue("resolution_y"));
     TextureBuffer::loadFont(Config::getString("font"));
@@ -168,11 +180,12 @@ void Game::connectToServer(std::string Ip)
         std::cout<<"Networkfailure Try: "<<i<<std::endl;
         if(i==5)
         {
-            Game::changeMode(Game::Serverlist);
+            Game::changeMode(Game::SERVERLIST);
         }
     }
     tcp.launch();
-    Game::changeMode(Game::Lobby);
+    players.clear();
+    Game::changeMode(Game::LOBBY);
 }
 
 void Game::dataInterface(std::string data)
@@ -212,8 +225,8 @@ void Game::tcpcheck()
                     std::string nmsg = "Server down!";
                     Chatwindow::addText(nmsg);
                     closesocket(tcpsocket);
-                    tcpsocket = INVALID_SOCKET;
-                    Game::changeMode(Game::Serverlist);
+                    //tcpsocket = INVALID_SOCKET;
+                    Game::changeMode(Game::SERVERLIST);
                     tcp.terminate();
                     return;
                 }
@@ -279,6 +292,32 @@ void Game::tcpcheck()
                                 (*it)->setActive();
                             }
                         }
+                    }
+                }
+                if(strcmp("RQST",key.c_str())==0)
+                {
+                    if(strcmp(msg.substr(0,msg.find_first_of("|")).c_str(),"MDE")==0)
+                    {
+                        msg = msg.substr(msg.find_first_of("|")+1);
+                        std::stringstream stream;
+                        stream<<msg.substr(0,msg.find_first_of("|"));
+                        //std::cout<<"change interface"<<std::endl;
+                        int intf;
+                        stream>>intf;
+                        changeMode(intf);
+                        switch(intf)
+                        {
+                            case PREGAME:
+                            {
+
+                                break;
+                            }
+
+                        }
+
+
+
+                        tcpsend("INTF|"+stream.str());
                     }
                 }
             }

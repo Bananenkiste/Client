@@ -1,26 +1,25 @@
-#include "InterfaceIntro.hpp"
-
+#include "InterfacePregame.hpp"
 
 #include "Game.hpp"
 #include "Button.hpp"
 #include "Config.hpp"
 #include "TextureBuffer.hpp"
 
-InterfaceIntro::InterfaceIntro(sf::RenderWindow* aWindow): Interface(aWindow)
+InterfacePregame::InterfacePregame(sf::RenderWindow* aWindow): Interface(aWindow)
 {
     background=TextureBuffer::LoadTexture("intro",false);
     background->setPosition(0,0);
 
-    buttons.push_back(new Button("Start",Config::getValue("resolution_x")*Config::getValue("intro_startbutton_x"),Config::getValue("resolution_y")*Config::getValue("intro_startbutton_y")));
+    //buttons.push_back(new Button("Start",Config::getValue("resolution_x")*Config::getValue("intro_startbutton_x"),Config::getValue("resolution_y")*Config::getValue("intro_startbutton_y")));
 
 }
 
-InterfaceIntro::~InterfaceIntro()
+InterfacePregame::~InterfacePregame()
 {
     //dtor
 }
 
-void InterfaceIntro::update(float step)
+void InterfacePregame::update(float step)
 {
     sf::Vector2i mpos = sf::Mouse::getPosition(*Interface::window);
     if(sf::Mouse::isButtonPressed(sf::Mouse::Left))
@@ -44,7 +43,7 @@ void InterfaceIntro::update(float step)
     }
 }
 
-void InterfaceIntro::draw(sf::RenderWindow* window)
+void InterfacePregame::draw(sf::RenderWindow* window)
 {
     if(background!=NULL)
     {
