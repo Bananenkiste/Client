@@ -17,6 +17,8 @@ class Level
 
         std::string getLevelString();
         void draw(sf::RenderWindow* window);
+        sf::Vector2i getSpawn(int id);
+
     private:
         std::vector<sf::Vector2i> spawn;
         std::string levelstring;

@@ -26,6 +26,7 @@ int Game::state;
 Interface* Game::ui;
 int Game::tcpsocket;
 sf::Thread Game::tcp(&Game::tcpcheck);
+Level* Game::level;
 
 
 void Game::run()
@@ -314,6 +315,10 @@ void Game::tcpcheck()
                                 std::cout<<"Level"<<msg<<std::endl;
                                 InterfacePregame* pre = (InterfacePregame*)ui;
                                 pre->setLevel(msg);
+                                for(std::vector<Player*>::iterator it = players.begin();it!=players.end();++it)
+                                {
+                                    (*it)->setPosition(level)
+                                }
                                 break;
                             }
                         }

@@ -55,11 +55,6 @@ void InterfacePregame::draw(sf::RenderWindow* window)
     {
         window->draw(*background);
     }
-    if(level!=NULL)
-    {
-        level->draw(window);
-    }
-
     for(std::vector<Button*>::iterator it=buttons.begin();it!=buttons.end();++it)
     {
         (*it)->draw(window);

@@ -65,3 +65,12 @@ void Level::draw(sf::RenderWindow* window)
         }
     }
 }
+
+sf::Vector2i Level::getSpawn(int id)
+{
+    if(id<spawn.size())
+    {
+        return(spawn[id]);
+    }
+}
+

@@ -18,6 +18,7 @@ class Player
         int getId();
 
         void setSocket(SOCKET asocket);
+        void setPosition(sf::Vector2f npos);
         SOCKET getSocket();
         void update(float step);
         void setVariables();
@@ -29,9 +30,9 @@ class Player
     private:
         int id;
         std::string name;
-        glm::mat3 position;
+        sf::Vector2f position;
         SOCKET socket;
-        sf::Sprite player;
+        sf::Sprite* pawn;
         sf::Sprite* playerlabel1;
         sf::Sprite* playerlabel2;
         sf::Text label;

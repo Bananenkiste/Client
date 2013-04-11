@@ -6,6 +6,7 @@
 
 Player::Player(int aid,std::string aname): name(aname), id(aid)
 {
+    pawn =TextureBuffer::LoadTexture("p"+aid,false);
     playerlabel1 = TextureBuffer::LoadTexture("button",false);
     playerlabel2 = TextureBuffer::LoadTexture("button_click",false);
     label.setString(name);
@@ -75,4 +76,10 @@ void Player::drawLabel(sf::RenderWindow* win,float x,float y)
     label.setPosition(playerlabel1->getTexture()->getSize().x/2+5,y+label.getCharacterSize()/2);
 
     win->draw(label);
+}
+
+void Player::setPosition(sf::Vector2f npos)
+{
+    position=npos;
+    pawn->setPosition(npos);
 }
