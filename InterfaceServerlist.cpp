@@ -79,7 +79,7 @@ void InterfaceServerlist::draw(sf::RenderWindow* window)
 {
     if(background)
     {
-       //window->draw(*background);
+       window->draw(*background);
     }
     for(std::vector<Button*>::iterator it=buttons.begin();it!=buttons.end();++it)
     {

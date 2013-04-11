@@ -195,6 +195,7 @@ void Network::broadcastSend(SOCKET node,int port, std::string msg)
     ip.resize(ip.find_last_of(".")+1);
     ip.append("255");
     addr.sin_addr.s_addr=inet_addr(ip.c_str());
+    std::cout<<"Brodcast out:"<<msg<<std::endl;
     sendto(node,msg.c_str(),strlen(msg.c_str()),0,(SOCKADDR*)&addr,sizeof(SOCKADDR_IN));
 }
 

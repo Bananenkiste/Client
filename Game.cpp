@@ -181,6 +181,7 @@ void Game::connectToServer(std::string Ip)
         if(i==5)
         {
             Game::changeMode(Game::SERVERLIST);
+            return;
         }
     }
     tcp.launch();
@@ -217,6 +218,7 @@ void Game::tcpcheck()
             std::string msg = Network::recieveData(tcpsocket);
             if(strcmp("",msg.c_str())!=0)
             {
+                std::cout<<"N-Message: "<<msg<<std::endl;
                 std::string key = msg.substr(0,msg.find_first_of("|"));
                 msg = msg.substr(msg.find_first_of("|")+1);
                 if(strcmp("CLOSE",key.c_str())==0)
@@ -224,10 +226,10 @@ void Game::tcpcheck()
                     std::cout<<"server down"<<std::endl;
                     std::string nmsg = "Server down!";
                     Chatwindow::addText(nmsg);
-                    closesocket(tcpsocket);
-                    //tcpsocket = INVALID_SOCKET;
-                    Game::changeMode(Game::SERVERLIST);
                     tcp.terminate();
+                    closesocket(tcpsocket);
+                    tcpsocket = INVALID_SOCKET;
+                    Game::changeMode(Game::SERVERLIST);
                     return;
                 }
                 if(strcmp("MSG",key.c_str())==0)
@@ -301,7 +303,6 @@ void Game::tcpcheck()
                         msg = msg.substr(msg.find_first_of("|")+1);
                         std::stringstream stream;
                         stream<<msg.substr(0,msg.find_first_of("|"));
-                        //std::cout<<"change interface"<<std::endl;
                         int intf;
                         stream>>intf;
                         changeMode(intf);
@@ -309,14 +310,13 @@ void Game::tcpcheck()
                         {
                             case PREGAME:
                             {
-
+                                msg = msg.substr(msg.find_first_of("|")+1);
+                                std::cout<<"Level"<<msg<<std::endl;
+                                InterfacePregame* pre = (InterfacePregame*)ui;
+                                pre->setLevel(msg);
                                 break;
                             }
-
                         }
-
-
-
                         tcpsend("INTF|"+stream.str());
                     }
                 }

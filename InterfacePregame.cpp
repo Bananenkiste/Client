@@ -4,12 +4,13 @@
 #include "Button.hpp"
 #include "Config.hpp"
 #include "TextureBuffer.hpp"
+#include "Level.hpp"
 
 InterfacePregame::InterfacePregame(sf::RenderWindow* aWindow): Interface(aWindow)
 {
     background=TextureBuffer::LoadTexture("intro",false);
     background->setPosition(0,0);
-
+    level=NULL;
     //buttons.push_back(new Button("Start",Config::getValue("resolution_x")*Config::getValue("intro_startbutton_x"),Config::getValue("resolution_y")*Config::getValue("intro_startbutton_y")));
 
 }
@@ -17,6 +18,11 @@ InterfacePregame::InterfacePregame(sf::RenderWindow* aWindow): Interface(aWindow
 InterfacePregame::~InterfacePregame()
 {
     //dtor
+}
+
+void InterfacePregame::setLevel(std::string levelinfo)
+{
+    level = new Level(levelinfo);
 }
 
 void InterfacePregame::update(float step)
@@ -30,8 +36,8 @@ void InterfacePregame::update(float step)
             {
                 if(strcmp((*it)->getName().c_str(),"Start")==0)
                 {
-                    std::cout<<"YAY button"<<std::endl;
-                    Game::changeMode(Game::SERVERLIST);
+                    //std::cout<<"YAY button"<<std::endl;
+                    //Game::changeMode(Game::SERVERLIST);
                     return;
                 }
             }
@@ -49,6 +55,11 @@ void InterfacePregame::draw(sf::RenderWindow* window)
     {
         window->draw(*background);
     }
+    if(level!=NULL)
+    {
+        level->draw(window);
+    }
+
     for(std::vector<Button*>::iterator it=buttons.begin();it!=buttons.end();++it)
     {
         (*it)->draw(window);
