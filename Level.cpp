@@ -41,7 +41,7 @@ Level::Level(std::string lvl)
                 }
                 ++i;
             }
-            leveldata[x][y]=TextureBuffer::LoadTexture(tile,false,(x*30)+30,(y*30)+30);
+            leveldata[x][y]=TextureBuffer::LoadTexture(tile,true,(x*30)+30,(y*30)+30);
 
         }
 

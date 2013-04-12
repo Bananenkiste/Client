@@ -10,12 +10,15 @@ Player::Player(int aid,std::string aname): name(aname), id(aid)
     stream<<id;
     std::string pawnname= "p"+stream.str();
     std::cout<<"pawn"<<pawnname<<std::endl;
-    pawn = TextureBuffer::LoadTexture(pawnname,false);
+    pawn = TextureBuffer::LoadTexture(pawnname,true);
     playerlabel1 = TextureBuffer::LoadTexture("button",false);
     playerlabel2 = TextureBuffer::LoadTexture("button_click",false);
     label.setString(name);
     label.setColor(sf::Color::Cyan);
     active=false;
+    dir=0;
+    tempdir;
+    speed=50;
 }
 
 Player::Player()
@@ -51,7 +54,34 @@ SOCKET Player::getSocket()
 
 void Player::update(float step)
 {
-    //player update
+    if(dir!=0)
+    {
+        sf::Vector2f mov;
+        if(dir&1)
+        {
+            std::cout<<"down"<<std::endl;
+            mov-=sf::Vector2f(0,1);
+        }
+        if(dir&2)
+        {
+            std::cout<<"up"<<std::endl;
+            mov+=sf::Vector2f(0,1);
+        }
+        if(dir&4)
+        {
+            std::cout<<"left"<<std::endl;
+            mov-=sf::Vector2f(1,0);
+        }
+        if(dir&8)
+        {
+            std::cout<<"right"<<std::endl;
+            mov+=sf::Vector2f(1,0);
+        }
+        position.x+=(mov.x*speed)*step;
+        position.y+=(mov.y*speed)*step;
+
+        pawn->setPosition(position);
+    }
 }
 
 void Player::setActive()
@@ -81,9 +111,7 @@ void Player::drawLabel(sf::RenderWindow* win,float x,float y)
         playerlabel2->setPosition(x,y);
         win->draw(*playerlabel2);
     }
-
     label.setPosition(playerlabel1->getTexture()->getSize().x/2+5,y+label.getCharacterSize()/2);
-
     win->draw(label);
 }
 
@@ -91,4 +119,9 @@ void Player::setPosition(sf::Vector2f npos)
 {
     position=npos;
     pawn->setPosition(npos);
+}
+
+void Player::setDir(int ndir)
+{
+    dir=ndir;
 }

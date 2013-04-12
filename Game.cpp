@@ -37,7 +37,7 @@ void Game::run()
         ui->update(Time::step());
         switch(state)
         {
-            case Game::LOBBY:
+            case Game::PREGAME:
             {
                 for(std::vector<Player*>::iterator it=players.begin();it!=players.end();++it)
                 {
@@ -323,13 +323,12 @@ void Game::tcpcheck()
                         stream>>dir;
                         stream.clear();
 
-                        std::cout<<id<<":"<<movx<<","<<movy<<"::"<<dir<<std::endl;
-
                         for(std::vector<Player*>::iterator it = players.begin();it!=players.end();++it)
                         {
                             if((*it)->getId()==id)
                             {
                                 (*it)->setPosition(sf::Vector2f(movx,movy));
+                                (*it)->setDir(dir);
                             }
                         }
                     }
@@ -352,7 +351,6 @@ void Game::tcpcheck()
                                 std::cout<<"Level"<<msg<<std::endl;
                                 InterfacePregame* pre = (InterfacePregame*)ui;
                                 pre->setLevel(msg);
-
                                 break;
                             }
                         }

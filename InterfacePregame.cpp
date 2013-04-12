@@ -52,6 +52,10 @@ void InterfacePregame::update(float step)
     {
         mov+=1<<3;
     }
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+    {
+        mov+=1<<4;
+    }
     if(mov!=movement)
     {
         movement=mov;
@@ -59,24 +63,6 @@ void InterfacePregame::update(float step)
         stream<<mov;
         Game::tcpsend("MOV|"+stream.str());
     }
-    /*std::cout<<"Movement"<<mov<<std::endl;
-    if(mov&1)
-    {
-        std::cout<<"down"<<std::endl;
-    }
-    if(mov&2)
-    {
-        std::cout<<"up"<<std::endl;
-    }
-    if(mov&4)
-    {
-        std::cout<<"left"<<std::endl;
-    }
-    if(mov&8)
-    {
-        std::cout<<"right"<<std::endl;
-    }*/
-
 }
 
 void InterfacePregame::draw(sf::RenderWindow* window)

@@ -20,6 +20,7 @@ class Player
 
         void setSocket(SOCKET asocket);
         void setPosition(sf::Vector2f npos);
+        void setDir(int ndir);
         SOCKET getSocket();
         void update(float step);
         void setVariables();
@@ -32,6 +33,11 @@ class Player
         int id;
         std::string name;
         sf::Vector2f position;
+        sf::Vector2f target;
+        int dir;
+        int tempdir;
+
+        float speed;
         SOCKET socket;
         sf::Sprite* pawn;
         sf::Sprite* playerlabel1;

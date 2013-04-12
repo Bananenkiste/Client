@@ -14,7 +14,7 @@ Button::Button(std::string title,int x, int y): name(title)
 
 Button::~Button()
 {
-    //dtor
+
 }
 
 void Button::update(int x, int y)
