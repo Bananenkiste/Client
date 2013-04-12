@@ -63,6 +63,8 @@
 		<Unit filename="InterfacePregame.hpp" />
 		<Unit filename="InterfaceServerlist.cpp" />
 		<Unit filename="InterfaceServerlist.hpp" />
+		<Unit filename="Level.cpp" />
+		<Unit filename="Level.hpp" />
 		<Unit filename="Message.cpp" />
 		<Unit filename="Message.hpp" />
 		<Unit filename="Mutex.cpp" />

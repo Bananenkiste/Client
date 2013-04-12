@@ -25,7 +25,7 @@ class Game
         static void console(std::string cmp);
         static void tcpcheck();
         static void tcpsend(std::string data);
-        static std::vector<Player*> getPlayers();
+        static std::vector<Player*>* getPlayers();
 
 
 
@@ -38,7 +38,6 @@ class Game
         static Interface* ui;
         static int tcpsocket;
         static sf::Thread tcp;
-        static Level* level;
 };
 
 #endif // GAME_H

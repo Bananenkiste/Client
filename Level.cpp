@@ -35,15 +35,18 @@ Level::Level(std::string lvl)
                     case '3':
                     {
                         tile="0";
-                        spawn.push_back(sf::Vector2i(x,y));
+                        spawn.push_back(sf::Vector2f(30+(x*30),30+(y*30)));
                         break;
                     }
                 }
                 ++i;
             }
             leveldata[x][y]=TextureBuffer::LoadTexture(tile,false,(x*30)+30,(y*30)+30);
+
         }
+
     }
+    //TextureBuffer::LoadTexture("buffer",false);
 }
 
 Level::~Level()
@@ -66,7 +69,7 @@ void Level::draw(sf::RenderWindow* window)
     }
 }
 
-sf::Vector2i Level::getSpawn(int id)
+sf::Vector2f Level::getSpawn(int id)
 {
     if(id<spawn.size())
     {

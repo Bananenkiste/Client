@@ -26,7 +26,6 @@ int Game::state;
 Interface* Game::ui;
 int Game::tcpsocket;
 sf::Thread Game::tcp(&Game::tcpcheck);
-Level* Game::level;
 
 
 void Game::run()
@@ -281,9 +280,10 @@ void Game::tcpcheck()
                 }
                 if(strcmp("PACT",key.c_str())==0)
                 {
+                    //msg = msg.substr(msg.find_first_of("|")+1);
+                    std::cout<<"PACT: "<<msg.substr(0,msg.find_first_of("|"))<<std::endl;
                     if(strcmp(msg.substr(0,msg.find_first_of("|")).c_str(),"RDY")==0)
                     {
-                        msg = msg.substr(msg.find_first_of("|")+1);
                         std::stringstream stream;
                         stream<<msg.substr(0,msg.find_first_of("|"));
                         int id;
@@ -293,6 +293,43 @@ void Game::tcpcheck()
                             if((*it)->getId()==id)
                             {
                                 (*it)->setActive();
+                            }
+                        }
+                    }
+                    if(strcmp(msg.substr(0,msg.find_first_of("|")).c_str(),"MOV")==0)
+                    {
+                        int id,dir;
+                        float movx,movy;
+                        std::stringstream stream;
+
+                        msg = msg.substr(msg.find_first_of("|")+ 1);
+                        stream<<msg.substr(0,msg.find_first_of("|"));
+                        stream>>id;
+                        stream.clear();
+
+                        msg = msg.substr(msg.find_first_of("|")+1);
+                        stream<<msg.substr(0,msg.find_first_of("|"));
+                        stream>>movx;
+                        stream.clear();
+
+                        msg = msg.substr(msg.find_first_of("|")+1);
+                        stream<<msg.substr(0,msg.find_first_of("|"));
+                        std::cout<<msg.substr(0,msg.find_first_of("|"))<<":"<<stream.str()<<std::endl;
+                        stream>>movy;
+                        stream.clear();
+
+                        msg = msg.substr(msg.find_first_of("|")+1);
+                        stream<<msg;
+                        stream>>dir;
+                        stream.clear();
+
+                        std::cout<<id<<":"<<movx<<","<<movy<<"::"<<dir<<std::endl;
+
+                        for(std::vector<Player*>::iterator it = players.begin();it!=players.end();++it)
+                        {
+                            if((*it)->getId()==id)
+                            {
+                                (*it)->setPosition(sf::Vector2f(movx,movy));
                             }
                         }
                     }
@@ -315,10 +352,7 @@ void Game::tcpcheck()
                                 std::cout<<"Level"<<msg<<std::endl;
                                 InterfacePregame* pre = (InterfacePregame*)ui;
                                 pre->setLevel(msg);
-                                for(std::vector<Player*>::iterator it = players.begin();it!=players.end();++it)
-                                {
-                                    (*it)->setPosition(level)
-                                }
+
                                 break;
                             }
                         }
@@ -338,7 +372,7 @@ void Game::tcpsend(std::string data)
     }
 }
 
-std::vector<Player*> Game::getPlayers()
+std::vector<Player*>* Game::getPlayers()
 {
-    return(players);
+    return(&players);
 }

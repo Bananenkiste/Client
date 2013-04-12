@@ -17,10 +17,10 @@ class Level
 
         std::string getLevelString();
         void draw(sf::RenderWindow* window);
-        sf::Vector2i getSpawn(int id);
+        sf::Vector2f getSpawn(int id);
 
     private:
-        std::vector<sf::Vector2i> spawn;
+        std::vector<sf::Vector2f> spawn;
         std::string levelstring;
         sf::Sprite* leveldata[16][10];
 };

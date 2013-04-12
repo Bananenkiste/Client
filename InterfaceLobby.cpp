@@ -66,9 +66,9 @@ void InterfaceLobby::draw(sf::RenderWindow* window)
         (*it)->draw(window);
     }
 
-    std::vector<Player*> temp = Game::getPlayers();
+    std::vector<Player*>* temp = Game::getPlayers();
     int c =0;
-    for(std::vector<Player*>::iterator it = temp.begin();it!=temp.end();++it)
+    for(std::vector<Player*>::iterator it = temp->begin();it!=temp->end();++it)
     {
         int x =50+200*(int)(c/4);
         int y =50+80*(int)(c%4);

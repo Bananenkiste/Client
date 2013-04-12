@@ -6,7 +6,11 @@
 
 Player::Player(int aid,std::string aname): name(aname), id(aid)
 {
-    pawn =TextureBuffer::LoadTexture("p"+aid,false);
+    std::stringstream stream;
+    stream<<id;
+    std::string pawnname= "p"+stream.str();
+    std::cout<<"pawn"<<pawnname<<std::endl;
+    pawn = TextureBuffer::LoadTexture(pawnname,false);
     playerlabel1 = TextureBuffer::LoadTexture("button",false);
     playerlabel2 = TextureBuffer::LoadTexture("button_click",false);
     label.setString(name);
@@ -58,6 +62,11 @@ void Player::setActive()
 void Player::setVariables()
 {
 
+}
+
+void Player::draw(sf::RenderWindow* window)
+{
+    window->draw(*pawn);
 }
 
 void Player::drawLabel(sf::RenderWindow* win,float x,float y)

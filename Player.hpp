@@ -5,6 +5,7 @@
 #include <iostream>
 #include <winsock2.h>
 #include <windows.h>
+#include <sstream>
 #include <sfml/graphics.hpp>
 
 class Player
@@ -22,7 +23,7 @@ class Player
         SOCKET getSocket();
         void update(float step);
         void setVariables();
-        void draw();
+        void draw(sf::RenderWindow* window);
         void drawLabel(sf::RenderWindow* win,float x,float y);
         void setActive();
 

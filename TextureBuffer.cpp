@@ -16,6 +16,7 @@ sf::Sprite* TextureBuffer::LoadTexture(std::string filename,bool middle,float x,
 
 sf::Sprite* TextureBuffer::LoadTexture(std::string filename,bool middle)
 {
+    std::cout<<"access to sprite:"<<filename<<std::endl;
     std::map<std::string,sf::Texture>::iterator it;
     it=textures.find(filename);
     if(it!=TextureBuffer::textures.end())
