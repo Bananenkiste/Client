@@ -1,5 +1,6 @@
 #include "Network.hpp"
 
+#include "Encryption.hpp"
 
 //Global Variables
 bool Network::i;
@@ -121,6 +122,7 @@ void Network::WaitForClient(SOCKET node, SOCKET s)
 void Network::sendTcpData(SOCKET node,std::string msg)
 {
     std::cout<<"out:"<<msg<<std::endl;
+    msg=Encryption::encrypt(msg);
     send(node,msg.c_str(),strlen(msg.c_str()),0);
 }
 
@@ -133,14 +135,15 @@ std::string Network::recieveData(SOCKET node)
         if(rc<=0)
         {
             strcpy(buffer,"CLOSE");
+            return (buffer);
         }
         else if(rc>0)
         {
             buffer[rc]=0;
         }
-
         msg = buffer;
-        //std::cout<<"N-Message:"<<msg<<std::endl;
+        msg=Encryption::decrypt(msg);
+        std::cout<<"raw-message:"<<buffer<<std::endl;
         return msg;
 }
 
@@ -195,7 +198,9 @@ void Network::broadcastSend(SOCKET node,int port, std::string msg)
     ip.resize(ip.find_last_of(".")+1);
     ip.append("255");
     addr.sin_addr.s_addr=inet_addr(ip.c_str());
+
     std::cout<<"Brodcast out:"<<msg<<std::endl;
+    msg=Encryption::encrypt(msg);
     sendto(node,msg.c_str(),strlen(msg.c_str()),0,(SOCKADDR*)&addr,sizeof(SOCKADDR_IN));
 }
 
@@ -226,7 +231,8 @@ std::string Network::broadcastRecieve(SOCKET node)
     else
     {
       buf[rc]='\0';
-      return(buf);
+      std::cout<<buf<<std::endl;
+      return(Encryption::decrypt(buf));
     }
 }
 

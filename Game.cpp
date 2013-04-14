@@ -71,7 +71,6 @@ void Game::changeMode(int newMode)
         }
         case Game::LOBBY :
         {
-
             ui = (Interface*) new InterfaceLobby(window);
             break;
         }
@@ -226,21 +225,21 @@ void Game::tcpcheck()
                     std::cout<<"server down"<<std::endl;
                     std::string nmsg = "Server down!";
                     Chatwindow::addText(nmsg);
-                    tcp.terminate();
+                    Game::changeMode(Game::SERVERLIST);
                     closesocket(tcpsocket);
                     tcpsocket = INVALID_SOCKET;
-                    Game::changeMode(Game::SERVERLIST);
+                    tcp.terminate();
                     return;
                 }
-                if(strcmp("MSG",key.c_str())==0)
+                else if(strcmp("MSG",key.c_str())==0)
                 {
                     Chatwindow::addText(msg.substr(msg.find_first_of("|")+1));
                 }
-                if(strcmp("IDENT",key.c_str())==0)
+                else if(strcmp("IDENT",key.c_str())==0)
                 {
                     Network::sendTcpData(tcpsocket,"IDENT|"+Config::getString("name"));
                 }
-                if(strcmp("PJOIN",key.c_str())==0)
+                else if(strcmp("PJOIN",key.c_str())==0)
                 {
                     std::stringstream stream;
                     stream<<msg.substr(0,msg.find_first_of("|"));
@@ -263,7 +262,7 @@ void Game::tcpcheck()
                     }
 
                 }
-                if(strcmp("PLEAVE",key.c_str())==0)
+                else if(strcmp("PLEAVE",key.c_str())==0)
                 {
                     std::stringstream stream;
                     stream<<msg.substr(0,msg.find_first_of("|"));
@@ -278,7 +277,7 @@ void Game::tcpcheck()
                         }
                     }
                 }
-                if(strcmp("PACT",key.c_str())==0)
+                else if(strcmp("PACT",key.c_str())==0)
                 {
                     //msg = msg.substr(msg.find_first_of("|")+1);
                     std::cout<<"PACT: "<<msg.substr(0,msg.find_first_of("|"))<<std::endl;
@@ -296,7 +295,7 @@ void Game::tcpcheck()
                             }
                         }
                     }
-                    if(strcmp(msg.substr(0,msg.find_first_of("|")).c_str(),"MOV")==0)
+                    else if(strcmp(msg.substr(0,msg.find_first_of("|")).c_str(),"MOV")==0)
                     {
                         int id,dir;
                         float movx,movy;
@@ -332,8 +331,22 @@ void Game::tcpcheck()
                             }
                         }
                     }
+                    else if(strcmp(msg.substr(0,msg.find_first_of("|")).c_str(),"DTH")==0)
+                    {
+                        std::stringstream stream;
+                        stream<<msg.substr(0,msg.find_first_of("|"));
+                        int id;
+                        stream>>id;
+                        for(std::vector<Player*>::iterator it = players.begin();it!=players.end();++it)
+                        {
+                            if((*it)->getId()==id)
+                            {
+                                (*it)->setAlive(false);
+                            }
+                        }
+                    }
                 }
-                if(strcmp("RQST",key.c_str())==0)
+                else if(strcmp("RQST",key.c_str())==0)
                 {
                     if(strcmp(msg.substr(0,msg.find_first_of("|")).c_str(),"MDE")==0)
                     {
@@ -356,6 +369,10 @@ void Game::tcpcheck()
                         }
                         tcpsend("INTF|"+stream.str());
                     }
+                }
+                else if(strcmp("INTF",key.c_str())==0)
+                {
+                    ui->handleData(msg);
                 }
             }
         }

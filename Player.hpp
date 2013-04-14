@@ -27,6 +27,8 @@ class Player
         void draw(sf::RenderWindow* window);
         void drawLabel(sf::RenderWindow* win,float x,float y);
         void setActive();
+        void setAlive(bool state);
+        bool getAlive();
 
     protected:
     private:
@@ -44,6 +46,7 @@ class Player
         sf::Sprite* playerlabel2;
         sf::Text label;
         bool active;
+        bool alive;
 };
 
 #endif // PLAYER_H

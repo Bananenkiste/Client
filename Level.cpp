@@ -1,12 +1,60 @@
 #include "Level.hpp"
 
-#include "TextureBuffer.hpp"
-
+//#include "TextureBuffer.hpp"
+#include "Tile.hpp"
 
 Level::Level(std::string lvl)
 {
-    levelstring=lvl;
+    levelupdate(lvl);
+}
 
+Level::~Level()
+{
+}
+
+std::string Level::getLevelString()
+{
+    return(levelstring);
+}
+
+void Level::draw(sf::RenderWindow* window)
+{
+    for(int y=0;y<9;++y)
+    {
+        for(int x=0;x<15;++x)
+        {
+            leveldata[x][y]->draw(window);
+        }
+    }
+}
+
+sf::Vector2f Level::getSpawn(int id)
+{
+    if(id<spawn.size())
+    {
+        return(spawn[id]);
+    }
+}
+
+int Level::getTile(int x, int y)
+{
+    return(leveldata[x][y]->getTile());
+}
+
+void Level::setTile(int x, int y, int value)
+{
+    std::stringstream stream;
+    stream<<value;
+    leveldata[x][y]->setTexture(stream.str());
+}
+void Level::setType(int x, int y,int type)
+{
+    leveldata[x][y]->setTile(type);
+}
+
+void Level::levelupdate(std::string lvl)
+{
+    levelstring=lvl;
     int i=0;
     for(int y=0;y<9;++y)
     {
@@ -41,39 +89,8 @@ Level::Level(std::string lvl)
                 }
                 ++i;
             }
-            leveldata[x][y]=TextureBuffer::LoadTexture(tile,true,(x*30)+30,(y*30)+30);
-
+            leveldata[x][y]=new Tile(tile,(x*30)+30,(y*30)+30);
         }
-
-    }
-    //TextureBuffer::LoadTexture("buffer",false);
-}
-
-Level::~Level()
-{
-}
-
-std::string Level::getLevelString()
-{
-    return(levelstring);
-}
-
-void Level::draw(sf::RenderWindow* window)
-{
-    for(int y=0;y<9;++y)
-    {
-        for(int x=0;x<15;++x)
-        {
-            window->draw(*leveldata[x][y]);
-        }
-    }
-}
-
-sf::Vector2f Level::getSpawn(int id)
-{
-    if(id<spawn.size())
-    {
-        return(spawn[id]);
     }
 }
 

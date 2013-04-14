@@ -64,9 +64,6 @@ void Chatwindow::update(float step,sf::RenderWindow* window)
                 if(strcmp(cmp.substr(0,2).c_str(),"c_")==0)
                 {
                     Game::console(cmp.substr(2,cmp.length()).c_str());
-                    /*std::cout<<"connect befehl"<<std::endl;
-                    std::cout<<(cmp.substr(8,cmp.length()).c_str())<<std::endl;
-                    Game::connectToServer(cmp.substr(8,cmp.length()).c_str());*/
                 }
                 else if(strcmp(cmp.c_str(),"")!=0)
                 {

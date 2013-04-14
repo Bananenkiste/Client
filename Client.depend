@@ -106,7 +106,7 @@
 	"sfml\graphics.hpp"
 	"sfml\window.hpp"
 
-1365082009 source:n:\repositorys\client\chatwindow.cpp
+1365872691 source:n:\repositorys\client\chatwindow.cpp
 	"Chatwindow.hpp"
 	"Game.hpp"
 	"Message.hpp"
@@ -128,7 +128,7 @@
 	<vector>
 	"Player.hpp"
 
-1365779649 n:\repositorys\client\player.hpp
+1365901127 n:\repositorys\client\player.hpp
 	<glm/glm.hpp>
 	<iostream>
 	<winsock2.h>
@@ -170,7 +170,7 @@
 	<sstream>
 	<dirent.h>
 
-1365772771 source:n:\repositorys\client\game.cpp
+1365899815 source:n:\repositorys\client\game.cpp
 	<winsock2.h>
 	<windows.h>
 	<sstream>
@@ -204,7 +204,7 @@
 	"Interface.hpp"
 	"TextureBuffer.hpp"
 
-1365632332 source:n:\repositorys\client\interfaceintro.cpp
+1365881463 source:n:\repositorys\client\interfaceintro.cpp
 	"InterfaceIntro.hpp"
 	"Game.hpp"
 	"Button.hpp"
@@ -218,17 +218,18 @@
 1365081830 source:n:\repositorys\client\message.cpp
 	"Message.hpp"
 
-1365678092 source:n:\repositorys\client\network.cpp
+1365874757 source:n:\repositorys\client\network.cpp
 	"Network.hpp"
+	"Encryption.hpp"
 
-1365795932 source:n:\repositorys\client\player.cpp
+1365901150 source:n:\repositorys\client\player.cpp
 	"Player.hpp"
 	"Network.hpp"
 	"Game.hpp"
 	"Chatwindow.hpp"
 	"TextureBuffer.hpp"
 
-1365704394 source:n:\repositorys\client\texturebuffer.cpp
+1365872823 source:n:\repositorys\client\texturebuffer.cpp
 	"TextureBuffer.hpp"
 	"Animation.hpp"
 
@@ -457,12 +458,12 @@
 1365081682 n:\repositorys\client\mutex.hpp
 	<sfml/system.hpp>
 
-1365717543 n:\repositorys\client\interfacepregame.hpp
+1365889610 n:\repositorys\client\interfacepregame.hpp
 	"Interface.hpp"
 	<sfml/window.hpp>
 	<sfml/system.hpp>
 
-1365773046 source:n:\repositorys\client\interfacepregame.cpp
+1365901200 source:n:\repositorys\client\interfacepregame.cpp
 	"InterfacePregame.hpp"
 	"Game.hpp"
 	"Button.hpp"
@@ -470,6 +471,7 @@
 	"TextureBuffer.hpp"
 	"Level.hpp"
 	"Player.hpp"
+	"Bomb.hpp"
 
 1365632439 source:n:\repositorys\client\interfaceloading.cpp
 	"InterfaceLoading.hpp"
@@ -483,14 +485,39 @@
 	<sfml/window.hpp>
 	<sfml/system.hpp>
 
-1365702613 n:\repositorys\client\level.hpp
+1365890285 n:\repositorys\client\level.hpp
 	<iostream>
 	<vector>
 	<sfml/graphics.hpp>
 	<sfml/window.hpp>
 	<sfml/system.hpp>
 
-1365779401 source:n:\repositorys\client\level.cpp
+1365890301 source:n:\repositorys\client\level.cpp
 	"Level.hpp"
+	"Tile.hpp"
+
+1365871832 source:n:\repositorys\client\encryption.cpp
+	"Encryption.hpp"
+
+1365869124 n:\repositorys\client\encryption.hpp
+	<iostream>
+
+1365872360 n:\repositorys\client\tile.hpp
+	<iostream>
+	<sstream>
+	<sfml/graphics.hpp>
+	<sfml/window.hpp>
+	<sfml/system.hpp>
+
+1365888239 source:n:\repositorys\client\bomb.cpp
+	"Bomb.hpp"
+	"TextureBuffer.hpp"
+
+1365805276 n:\repositorys\client\bomb.hpp
+	<sfml/graphics.hpp>
+	<sfml/window.hpp>
+
+1365872344 source:n:\repositorys\client\tile.cpp
+	"Tile.hpp"
 	"TextureBuffer.hpp"
 

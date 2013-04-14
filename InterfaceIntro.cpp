@@ -12,7 +12,20 @@ InterfaceIntro::InterfaceIntro(sf::RenderWindow* aWindow): Interface(aWindow)
     background->setPosition(0,0);
 
     buttons.push_back(new Button("Start",Config::getValue("resolution_x")*Config::getValue("intro_startbutton_x"),Config::getValue("resolution_y")*Config::getValue("intro_startbutton_y")));
+    //Loading of all the Textures
 
+    TextureBuffer::LoadTexture("p0",false);
+    TextureBuffer::LoadTexture("p1",false);
+    TextureBuffer::LoadTexture("p2",false);
+    TextureBuffer::LoadTexture("p3",false);
+    TextureBuffer::LoadTexture("p4",false);
+    TextureBuffer::LoadTexture("p5",false);
+    TextureBuffer::LoadTexture("p6",false);
+    TextureBuffer::LoadTexture("p7",false);
+    TextureBuffer::LoadTexture("0",false);
+    TextureBuffer::LoadTexture("1",false);
+    TextureBuffer::LoadTexture("2",false);
+    TextureBuffer::LoadTexture("bomb",false);
 }
 
 InterfaceIntro::~InterfaceIntro()

@@ -19,6 +19,7 @@ Player::Player(int aid,std::string aname): name(aname), id(aid)
     dir=0;
     tempdir;
     speed=50;
+    alive=true;
 }
 
 Player::Player()
@@ -59,22 +60,18 @@ void Player::update(float step)
         sf::Vector2f mov;
         if(dir&1)
         {
-            std::cout<<"down"<<std::endl;
             mov-=sf::Vector2f(0,1);
         }
         if(dir&2)
         {
-            std::cout<<"up"<<std::endl;
             mov+=sf::Vector2f(0,1);
         }
         if(dir&4)
         {
-            std::cout<<"left"<<std::endl;
             mov-=sf::Vector2f(1,0);
         }
         if(dir&8)
         {
-            std::cout<<"right"<<std::endl;
             mov+=sf::Vector2f(1,0);
         }
         position.x+=(mov.x*speed)*step;
@@ -89,6 +86,16 @@ void Player::setActive()
     active = !active;
 }
 
+void Player::setAlive(bool state)
+{
+    alive = state;
+}
+
+bool Player::getAlive()
+{
+    return(alive);
+}
+
 void Player::setVariables()
 {
 
@@ -96,7 +103,11 @@ void Player::setVariables()
 
 void Player::draw(sf::RenderWindow* window)
 {
-    window->draw(*pawn);
+    if(alive)
+    {
+        window->draw(*pawn);
+    }
+
 }
 
 void Player::drawLabel(sf::RenderWindow* win,float x,float y)
